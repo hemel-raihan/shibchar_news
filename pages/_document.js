@@ -53,6 +53,9 @@ class MyDocument extends Document {
 
         <link id="theme" rel="stylesheet" type="text/css" media="all" href="/assets/colors/color1.css"/>
 
+        <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/jquery.transfer.css" />
+		    <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/icon_font/icon_font.css" />
+
         </Head>
         <body>
           <Main />
@@ -72,6 +75,8 @@ class MyDocument extends Document {
       <script src="/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
       <script src="/assets/plugins/p-scroll/pscroll.js"></script>
       <script src="/assets/plugins/p-scroll/pscroll-1.js"></script>
+
+      <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
         </body>
       </Html>
     )
