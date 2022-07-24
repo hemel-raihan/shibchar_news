@@ -12,9 +12,9 @@ export default function ChildCategories({item, child, i}) {
                 <input type="checkbox" name="parent_id" value={child._id}  class="checkbox-normal group-checkbox-item-1636878492751 belongs-group-0-1636878492751" id={`group_${item._id}_checkbox_${i}_1636878492751`} />
                 <label for={`group_${item._id}_checkbox_${i}_1636878492751`} class="group-checkbox-name-1636878492751">{child.name}</label>
           </div>
-          {/* @if($category->childrenRecursive->count()>0)
-        @include('backend.admin.blog.category.child_categories', ['sub_category' => $sub])
-        @endif */}
+          {child.childs.map((child, i)=>(
+            <ChildCategories child={child} item={item} i={i}/>
+          ))}
         </li>
     </ul>
     </>
