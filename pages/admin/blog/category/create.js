@@ -1,9 +1,11 @@
 import Link from "next/link";
+import useFetch from '../../../../hooks/useFetch';
+import ChildCategories from './child_categories';
 
 
 export default function Create() {
   
-
+	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories")
   return (
     <>
      <div className="page-header">
@@ -86,19 +88,35 @@ export default function Create() {
 												</li>
                                             @endforeach */}
 
+												{data.map((item, index)=>(
                                                 <li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
 													<div className="checkbox-group">
-														<input type="checkbox" name="parent_id" value="1" className="checkbox-normal group-select-all-1636878492751" id="group_1_1636878492751" /><label for="group_1_1636878492751" className="group-name-1636878492751">test</label>
+														<input type="checkbox"  value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label for={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
 													</div>
-                                                    <ul className="transfer-double-group-list-li-ul transfer-double-group-list-li-ul-16368784927512">
-                                                        <li className="transfer-double-group-list-li-ul-li transfer-double-group-list-li-ul-li-16368784927512">
-                                                        <div className="checkbox-group">
-                                                                <input type="checkbox" name="parent_id" value="1"  className="checkbox-normal group-checkbox-item-16368784927512 belongs-group-2-1636878492751" id="group_2_checkbox_1_16368784927512" />
-                                                                <label for="group_2_checkbox_1_16368784927512" className="group-checkbox-name-16368784927512">hemel</label>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+													
+													{item.childs.map((child, i)=>(
+														<ChildCategories child={child} item={item} i={i}/>
+														// <ul className="transfer-double-group-list-li-ul transfer-double-group-list-li-ul-16368784927512">
+                                                        // <li className="transfer-double-group-list-li-ul-li transfer-double-group-list-li-ul-li-16368784927512">
+                                                        // <div className="checkbox-group">
+														// 		<input type="checkbox" name="parent_id" value={child._id}  class="checkbox-normal group-checkbox-item-1636878492751 belongs-group-0-1636878492751" id={`group_${item._id}_checkbox_${i}_1636878492751`} />
+            											// 		<label for={`group_${item._id}_checkbox_${i}_1636878492751`} class="group-checkbox-name-1636878492751">{child.name}</label>
+                                                        //     </div>
+                                                        // </li>
+                                                        // </ul>
+													))}
+														
+                                                    
 												</li>
+												))}
+
+                                            {/* {data.map((item)=>{
+												<li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
+												<div className="checkbox-group">
+													<input type="checkbox" value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label for={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
+												</div>
+											    </li>
+											})} */}
 
 											</ul>
 										</div>
