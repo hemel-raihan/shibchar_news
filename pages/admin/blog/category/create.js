@@ -1,11 +1,65 @@
+import React,{ useState, useEffect } from "react";
 import Link from "next/link";
 import useFetch from '../../../../hooks/useFetch';
 import ChildCategories from './child_categories';
-
+import Axios from '../../../../hooks/axios';
+import { useRouter } from 'next/router';
+import toast from "../../../../components/Toast/index";
 
 export default function Create() {
+	const notify = React.useCallback((type, message) => {
+		toast({ type, message });
+	  }, []);
   
 	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories")
+
+	const {http} = Axios();
+	const router = useRouter();
+
+	const [name, setName] = useState("");
+    const [desc, setDesc] = useState(""); 
+    const [parentId, setparentId] = useState();
+
+	const subCat = (subItem) =>{
+		setparentId(subItem);
+	}
+	console.log(parentId)
+
+	async function submitForm(e) {
+		e.preventDefault();
+		await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`,{name, desc, parentId})
+		.then((res)=>{
+		   notify("success", "successfully Added!");
+		    console.log(res.data);
+		   //router.push('/modules/hr/holidays');
+		});
+		// .catch((e)=>{
+  
+		//   const msg = e.response.data.response;
+  
+		//    if(typeof(e.response.data.response) == 'string'){
+		// 	notify("error", `${e.response.data.response}`);
+		//    }
+		//    else{
+		// 	if(msg.title){
+		// 	  notify("error", `${msg.title.Title}`);
+		// 	}
+		// 	if(msg.type){
+		// 	  notify("error", `${msg.type.Type}`);
+		// 	}
+		// 	if(msg.description){
+		// 	  notify("error", `${msg.description.Description}`);
+		// 	}
+		// 	if(msg.year){
+		// 	  notify("error", `${msg.year.Year}`);
+		// 	}
+		// 	if(msg.date){
+		// 	  notify("error", `${msg.date.Date}`);
+		// 	}
+		//    }
+		// });
+	   }
+
   return (
     <>
      <div className="page-header">
@@ -21,7 +75,7 @@ export default function Create() {
         </div>
     </div>
 
-    <form enctype="multipart/form-data">
+    <form onSubmit={submitForm} enctype="multipart/form-data">
 	<div className="row">
 		<div className="col-lg-9 col-xl-9 col-md-12 col-sm-12">
 			<div className="card">
@@ -32,16 +86,15 @@ export default function Create() {
 
                    
 					<div className="form-group">
-						<label for="exampleInputname">Category Name</label>
-						<input type="text" className="form-control " value="" name="name" id="exampleInputname" placeholder="Category Name" />
+						<label htmlFor="exampleInputname">Category Name</label>
+						<input type="text" className="form-control" onChange={(e)=>setName(e.target.value)}  id="exampleInputname" placeholder="Category Name" />
                       
 					</div>
 
 					<div className="form-group">
-						<label for="exampleInputContent">Category Description</label>
+						<label htmlFor="exampleInputContent">Category Description</label>
 						<div className="ql-wrapper ql-wrapper-demo bg-light">
-							
-                            <textarea style={{height: '200px'}} className="form-control" id="" name="desc"></textarea>
+                            <textarea style={{height: '200px'}} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
 						</div>
 					</div>
 
@@ -50,7 +103,6 @@ export default function Create() {
 					<button type="submit" className="btn btn-success mt-1">
                         Create
                     </button>
-					<a href="{{route('admin.categories.index')}}" className="btn btn-danger mt-1">Cancel</a>
 				</div>
 			</div>
 		</div>
@@ -77,34 +129,19 @@ export default function Create() {
 
 											<ul className="transfer-double-group-list-ul transfer-double-group-list-ul-1636878492751">
 
-                                            {/* @foreach($categories as $key => $category)
-												<li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
-													<div className="checkbox-group">
-														<input type="checkbox" name="parent_id" value="{{$category->id}}" className="checkbox-normal group-select-all-1636878492751" id="group_{{$key}}_1636878492751" /><label for="group_{{$key}}_1636878492751" className="group-name-1636878492751">{{$category->name}}</label>
-													</div>
-                                                    @if($category->childrenRecursive->count()>0)
-													  @include('backend.admin.blog.category.child_categories', ['sub_category' => $category])
-                                                    @endif
-												</li>
-                                            @endforeach */}
-
 												{data.map((item, index)=>(
                                                 <li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
 													<div className="checkbox-group">
-														<input type="checkbox"  value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label for={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
+														<input type="checkbox" onChange={(e)=>setparentId(e.target.value)} value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
 													</div>
 													
-													{item.childs.map((child, i)=>(
+													{/* {item.childs.map((child, i)=>(
 														<ChildCategories child={child} item={item} i={i}/>
-														// <ul className="transfer-double-group-list-li-ul transfer-double-group-list-li-ul-16368784927512">
-                                                        // <li className="transfer-double-group-list-li-ul-li transfer-double-group-list-li-ul-li-16368784927512">
-                                                        // <div className="checkbox-group">
-														// 		<input type="checkbox" name="parent_id" value={child._id}  class="checkbox-normal group-checkbox-item-1636878492751 belongs-group-0-1636878492751" id={`group_${item._id}_checkbox_${i}_1636878492751`} />
-            											// 		<label for={`group_${item._id}_checkbox_${i}_1636878492751`} class="group-checkbox-name-1636878492751">{child.name}</label>
-                                                        //     </div>
-                                                        // </li>
-                                                        // </ul>
-													))}
+													))} */}
+
+														{item?.childs?.length != 0 && (
+														<ChildCategories item={item} subCat={subCat}/>
+														)}
 														
                                                     
 												</li>
