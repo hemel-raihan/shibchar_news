@@ -21,27 +21,21 @@ export default function LeftSidebar() {
 					<ul className="side-menu">
 						<li><h3>Main</h3></li>
 						<li className="slide">
-							<Link  href="index">
+							<Link  href="/">
                                 <a className="side-menu__item"  data-bs-toggle="slide"><i className="side-menu__icon fe fe-home"></i><span className="side-menu__label">Dashboard</span></a>
                             </Link>
 						</li>
-						<li><h3>Widgets & Maps</h3></li>
-						<li>
-							<Link href="https://www.youtube.com/watch?v=AokOS3ECMm0" >
-                                <a className="side-menu__item"><i className="side-menu__icon fe fe-grid"></i><span className="side-menu__label">Widgets</span></a>
-                            </Link>
-						</li>
+						<li><h3>CMS</h3></li>
 						<li className="slide">
 							<Link href="#" >
-                                <a className="side-menu__item" data-bs-toggle="slide"><i className="side-menu__icon fe fe-globe"></i><span className="side-menu__label">Maps</span><i className="angle fa fa-angle-right"></i></a>
+                                <a className="side-menu__item" data-bs-toggle="slide"><i className="side-menu__icon fe fe-globe"></i><span className="side-menu__label">Blog Management</span><i className="angle fa fa-angle-right"></i></a>
                             </Link>
 							<ul className="slide-menu">
-								<li><Link href="maps1"><a className="slide-item">Leaflet Maps</a></Link></li>
-								<li><Link href="maps2"><a className="slide-item">Mapel Maps</a></Link></li>
-								<li><Link href="maps"><a className="slide-item">Vector Maps</a></Link></li>
+								<li><Link href="/admin/blog/category/create"><a className="slide-item">Add Category</a></Link></li>
+								<li><Link href="/admin/blog/category"><a className="slide-item">All Categories</a></Link></li>
 							</ul>
 						</li>
-						<li><h3>Elements</h3></li>
+						{/* <li><h3>Elements</h3></li>
 						<li className="slide">
 							<Link href="#">
                                 <a className="side-menu__item" data-bs-toggle="slide"><i className="side-menu__icon fe fe-database"></i><span className="side-menu__label">Components</span><i className="angle fa fa-angle-right"></i></a>
@@ -245,7 +239,7 @@ export default function LeftSidebar() {
 								<li><Link href="icons9"><a>Typicons Icons</a></Link></li>
 								<li><Link href="icons10"><a>Weather Icons</a></Link></li>
 							</ul>
-						</li>
+						</li> */}
 					</ul>
 				</aside>
     </>

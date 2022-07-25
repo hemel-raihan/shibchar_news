@@ -11,7 +11,7 @@ export default function Create() {
 		toast({ type, message });
 	  }, []);
   
-	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories")
+	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories/child")
 
 	const {http} = Axios();
 	const router = useRouter();
@@ -31,7 +31,7 @@ export default function Create() {
 		.then((res)=>{
 		   notify("success", "successfully Added!");
 		    console.log(res.data);
-		   //router.push('/modules/hr/holidays');
+		   router.push('/admin/blog/category');
 		});
 		// .catch((e)=>{
   
@@ -68,14 +68,14 @@ export default function Create() {
           
         </div>
         <div className="ms-auto pageheader-btn">
-            <Link href="{{route('admin.categories.index')}}">
+            <Link href="/admin/blog/category">
             <a  className="btn btn-primary btn-icon text-white me-2">Back To CategoryList</a>
             </Link>
             
         </div>
     </div>
 
-    <form onSubmit={submitForm} enctype="multipart/form-data">
+    <form onSubmit={submitForm}>
 	<div className="row">
 		<div className="col-lg-9 col-xl-9 col-md-12 col-sm-12">
 			<div className="card">
@@ -130,7 +130,7 @@ export default function Create() {
 											<ul className="transfer-double-group-list-ul transfer-double-group-list-ul-1636878492751">
 
 												{data.map((item, index)=>(
-                                                <li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
+                                                <li key={index} className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
 													<div className="checkbox-group">
 														<input type="checkbox" onChange={(e)=>setparentId(e.target.value)} value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
 													</div>
@@ -142,25 +142,14 @@ export default function Create() {
 														{item?.childs?.length != 0 && (
 														<ChildCategories item={item} subCat={subCat}/>
 														)}
-														
-                                                    
+						
 												</li>
 												))}
-
-                                            {/* {data.map((item)=>{
-												<li className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
-												<div className="checkbox-group">
-													<input type="checkbox" value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label for={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
-												</div>
-											    </li>
-											})} */}
 
 											</ul>
 										</div>
 									</div>
-
 								</div>
-
 							</div>
 							<div className="transfer-double-footer"></div>
 						</div>
@@ -175,18 +164,18 @@ export default function Create() {
 				</div>
 				<div className="card-body">
 
-                    <div className="form-group">
+                    {/* <div className="form-group">
 						<div className="form-label">Status</div>
 						<label className="custom-switch">
 							<input type="checkbox" name="status" className="custom-switch-input " />
 							<span className="custom-switch-indicator"></span>
 						</label>
-					</div>
+					</div> */}
 
 
                     <div className="form-group">
 						<label className="form-label">Category Image</label>
-                        <input type="file" className="dropify form-control @error('image') is-invalid @enderror" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
+                        <input type="file" className="dropify form-control" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
 					</div>
 				</div>
 			</div>
