@@ -4,7 +4,8 @@ import useFetch from '../../../../hooks/useFetch';
 import ChildCategories from './child_categories';
 import Axios from '../../../../hooks/axios';
 import { useRouter } from 'next/router';
-import toast from "../../../../components/Toast/index";
+import toast from "../../../../components/admin/Toast/index";
+import Layout from "../../../../components/admin/Layout"
 
 export default function Create() {
 	const notify = React.useCallback((type, message) => {
@@ -16,9 +17,12 @@ export default function Create() {
 	const {http} = Axios();
 	const router = useRouter();
 
+	const [formError, setError] = useState("");
+
 	const [name, setName] = useState("");
     const [desc, setDesc] = useState(""); 
     const [parentId, setparentId] = useState();
+	const [file, setFile] = useState("");
 
 	const subCat = (subItem) =>{
 		setparentId(subItem);
@@ -27,37 +31,35 @@ export default function Create() {
 
 	async function submitForm(e) {
 		e.preventDefault();
-		await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`,{name, desc, parentId})
-		.then((res)=>{
-		   notify("success", "successfully Added!");
-		    console.log(res.data);
-		   router.push('/admin/blog/category');
-		});
-		// .catch((e)=>{
-  
-		//   const msg = e.response.data.response;
-  
-		//    if(typeof(e.response.data.response) == 'string'){
-		// 	notify("error", `${e.response.data.response}`);
-		//    }
-		//    else{
-		// 	if(msg.title){
-		// 	  notify("error", `${msg.title.Title}`);
-		// 	}
-		// 	if(msg.type){
-		// 	  notify("error", `${msg.type.Type}`);
-		// 	}
-		// 	if(msg.description){
-		// 	  notify("error", `${msg.description.Description}`);
-		// 	}
-		// 	if(msg.year){
-		// 	  notify("error", `${msg.year.Year}`);
-		// 	}
-		// 	if(msg.date){
-		// 	  notify("error", `${msg.date.Date}`);
-		// 	}
-		//    }
-		// });
+		if (file) {
+			const formData =new FormData();
+			const filename = Date.now() + file.name;
+			formData.append("name", name);
+			formData.append("file", file);
+			if(parentId){
+				formData.append("parentId", parentId);
+			}
+			formData.append("desc", desc);
+
+			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/create`,formData)
+			.then((res)=>{
+			notify("success", "successfully Added!");
+				console.log(res.data);
+			router.push('/admin/blog/category');
+			}).catch((e)=>{
+				setError(e.response.data.message)
+			});
+		  }
+		  else{
+			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`,{name, desc, parentId})
+			.then((res)=>{
+			notify("success", "successfully Added!");
+				console.log(res.data);
+			router.push('/admin/blog/category');
+			}).catch((e)=>{
+				setError(e.response.data.message)
+			});
+		  }
 	   }
 
   return (
@@ -82,9 +84,13 @@ export default function Create() {
 				<div className="card-header">
 					<h3 className="card-title">Create Blog Category</h3>
 				</div>
+				{formError && (
+					<div className="card-header">
+						<h3 style={{color: 'red'}} className="card-title">{formError}</h3>
+					</div>
+				)}
 				<div className="card-body">
 
-                   
 					<div className="form-group">
 						<label htmlFor="exampleInputname">Category Name</label>
 						<input type="text" className="form-control" onChange={(e)=>setName(e.target.value)}  id="exampleInputname" placeholder="Category Name" />
@@ -175,7 +181,7 @@ export default function Create() {
 
                     <div className="form-group">
 						<label className="form-label">Category Image</label>
-                        <input type="file" className="dropify form-control" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
+                        <input type="file"  onChange={(e) => setFile(e.target.files[0])} className="dropify form-control" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
 					</div>
 				</div>
 			</div>
@@ -184,4 +190,12 @@ export default function Create() {
     </form>
     </>
   );
+}
+
+Create.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+     </Layout>
+    )
 }

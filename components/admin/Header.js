@@ -12,6 +12,11 @@ export default function Header() {
 
 							<Link  href="#"><a aria-label="Hide Sidebar" className="app-sidebar__toggle" data-bs-toggle="sidebar"></a></Link>
 
+							<Link  href="/">
+							   <a class="nav-link icon full-screen-link mt-2 nav-link-bg" target="_blank"><i class="fe fe-globe"></i></a>
+							</Link>
+							
+
 							<Link href="#">
                                 <a className="header-brand1 d-flex d-md-none"><img src="/assets/images/brand/logo.png" className="header-brand-img desktop-logo" alt="logo" /></a>
                             </Link>

@@ -1,8 +1,9 @@
 import React,{ useState } from "react";
 import Link  from 'next/link';
 //import moment from 'moment';
-import toast from "../../../../components/Toast/index";
+import toast from "../../../../components/admin/Toast/index";
 import useFetch from './../../../../hooks/useFetch';
+import Layout from "../../../../components/admin/Layout"
 
 export default function tableList() {
 
@@ -91,7 +92,7 @@ export default function tableList() {
                                     </a>
 
                                     <button className="btn btn-danger waves effect" type="button"
-                                        onClick="deletepost$category({{ $category->id}})" >
+                                         >
                                         <i className="fa fa-trash"></i>
                                     </button>
                                 </td>
@@ -110,3 +111,11 @@ export default function tableList() {
     </>
   );
 }           
+
+tableList.getLayout = function getLayout(page) {
+    return (
+      <Layout>
+        {page}
+     </Layout>
+    )
+}

@@ -224,7 +224,7 @@ export default function RightSidebar() {
 								<div className="card-body">
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Updates Automatically</span>
 										</label>
@@ -238,14 +238,14 @@ export default function RightSidebar() {
 									</div>
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Show Contacts</span>
 										</label>
 									</div>
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Show Notication</span>
 										</label>
@@ -259,7 +259,7 @@ export default function RightSidebar() {
 									</div>
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Show Email Notification</span>
 										</label>
@@ -269,7 +269,7 @@ export default function RightSidebar() {
 								<div className="card-body">
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Show User Online</span>
 										</label>
@@ -297,7 +297,7 @@ export default function RightSidebar() {
 									</div>
 									<div className="form-group mg-b-10">
 										<label className="custom-switch ps-0">
-											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" checked />
+											<input type="checkbox" name="custom-switch-checkbox" className="custom-switch-input" />
 											<span className="custom-switch-indicator"></span>
 											<span className="custom-switch-description mg-l-10">Aloow All Notifications</span>
 										</label>

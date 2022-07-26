@@ -22,7 +22,7 @@ export default function LeftSidebar() {
 						<li><h3>Main</h3></li>
 						<li className="slide">
 							<Link  href="/">
-                                <a className="side-menu__item"  data-bs-toggle="slide"><i className="side-menu__icon fe fe-home"></i><span className="side-menu__label">Dashboard</span></a>
+                                <a className="side-menu__item" data-bs-toggle="slide"><i className="side-menu__icon fe fe-home"></i><span className="side-menu__label">Dashboard</span></a>
                             </Link>
 						</li>
 						<li><h3>CMS</h3></li>
