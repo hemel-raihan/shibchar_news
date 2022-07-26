@@ -56,6 +56,16 @@ class MyDocument extends Document {
         <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/jquery.transfer.css" />
 		    <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/icon_font/icon_font.css" />
 
+        {/* Frontend */}
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/bootstrap.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/dark.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/font-icons.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/animate.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/magnific-popup.css" type="text/css" />
+        <link rel="stylesheet" href="/assets/frontend/css/custom.css" type="text/css" />
+
         </Head>
         <body>
           <Main />
@@ -77,6 +87,11 @@ class MyDocument extends Document {
       <script src="/assets/plugins/p-scroll/pscroll-1.js"></script>
 
       <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
+
+      {/* Frontend */}
+      <script src="/assets/frontend/js/jquery.js"></script>
+      <script src="/assets/frontend/js/plugins.min.js"></script>
+      <script src="/assets/frontend/js/functions.js"></script>
         </body>
       </Html>
     )
