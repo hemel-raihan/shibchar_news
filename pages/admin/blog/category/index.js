@@ -4,6 +4,9 @@ import Link  from 'next/link';
 import toast from "../../../../components/admin/Toast/index";
 import useFetch from './../../../../hooks/useFetch';
 import Layout from "../../../../components/admin/Layout"
+import Axios from '../../../../hooks/axios';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function tableList() {
 
@@ -11,18 +14,20 @@ export default function tableList() {
     toast({ type, message });
   }, []);
 
-  const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories")
+  const {http} = Axios();
 
-//  async function deleteLeave(id)
-//  {
+  const {data, loading, error, reFetch} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`)
+
+ async function deleteCategory(id, parentId)
+ {
 //   setLoading(true);
-//   await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/app/hrm/leaves`,{action: "deleteLeaveCategory", leave_id: id})
-//     .then((res)=>{
-//       notify("success", "successfully has been deleted!");
-//       setLoading(false);
-//     });
-//     leaveList()
-//  }
+  await http.delete(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/${id}/${parentId}`)
+    .then((res)=>{
+      notify("success", "successfully has been deleted!");
+    //   setLoading(false);
+    });
+    reFetch()
+ }
 
   if (loading)
     return (
@@ -87,12 +92,15 @@ export default function tableList() {
                                 <td>{category.posts.length}</td>
 
                                 <td>
-                                    <a href="{{route('admin.categories.edit',$category->id)}}" className="btn btn-success">
-                                    <i className="fa fa-edit"></i>
-                                    </a>
+                                    <Link href={`category/edit/${category._id}`}>
+                                        <a className="btn btn-success">
+                                          <i className="fa fa-edit"></i>
+                                        </a>
+                                    </Link>
+                                    
 
                                     <button className="btn btn-danger waves effect" type="button"
-                                         >
+                                         onClick={() => deleteCategory(category._id, category?.parentId || 0)}  >
                                         <i className="fa fa-trash"></i>
                                     </button>
                                 </td>
@@ -116,6 +124,15 @@ tableList.getLayout = function getLayout(page) {
     return (
       <Layout>
         {page}
+        <ToastContainer
+            position="top-right"
+            autoClose={8000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            draggable={false}
+            closeOnClick
+            pauseOnHover
+        />
      </Layout>
     )
 }

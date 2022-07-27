@@ -1,41 +1,73 @@
 import React,{ useState, useEffect } from "react";
 import Link from "next/link";
-import useFetch from '../../../../hooks/useFetch';
-import ChildCategories from './child_categories';
-import Axios from '../../../../hooks/axios';
+import useFetch from '../../../../../hooks/useFetch';
+import EditChildCategories from './edit_child_categories';
+import Axios from '../../../../../hooks/axios';
 import { useRouter } from 'next/router';
-import toast from "../../../../components/admin/Toast/index";
-import Layout from "../../../../components/admin/Layout"
+import toast from "../../../../../components/admin/Toast/index";
+import Layout from "../../../../../components/admin/Layout"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios';
 
-export default function Create() {
+export default function Update() {
 	const notify = React.useCallback((type, message) => {
 		toast({ type, message });
 	  }, []);
-  
-	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories/child")
+
+    // const [details, setDetails] = useState([]);
+     const [categoryChild, setCategorychild] = useState([]);
+
 
 	const {http} = Axios();
 	const router = useRouter();
+	const { id } = router.query;
 
 	const [formError, setError] = useState("");
 
 	const [name, setName] = useState("");
     const [desc, setDesc] = useState(""); 
     const [parentId, setparentId] = useState();
+	const [oldParentId, setOldparentId] = useState();
 	const [file, setFile] = useState("");
+	const [image, setImage] = useState("");
 
 	const subCat = (subItem) =>{
 		setparentId(subItem);
 	}
-	console.log(parentId)
+
+
+	useEffect(() =>{
+        const fetchData = async ()=>{
+            try{
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/child`)
+                setCategorychild(res.data)
+            }
+            catch(err){
+            }
+        }
+		const fetchDetails = async ()=>{
+            try{
+                const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/${id}`)
+                setName(res.data.name)
+				setDesc(res.data.desc)
+				setparentId(res.data.parentId)
+				setOldparentId(res.data.parentId)
+				setImage(res.data.photo)
+            }
+            catch(err){
+            }
+        }
+        fetchData()
+		router.isReady && fetchDetails()
+    },[id])
 
 	async function submitForm(e) {
 		e.preventDefault();
 		if (file) {
 			const formData =new FormData();
 			const filename = Date.now() + file.name;
+			formData.append("imageName", filename);
 			formData.append("name", name);
 			formData.append("file", file);
 			if(parentId){
@@ -43,23 +75,23 @@ export default function Create() {
 			}
 			formData.append("desc", desc);
 
-			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/create`,formData)
+			await http.put(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/update/${id}/${oldParentId}`,formData)
 			.then((res)=>{
 			notify("success", "successfully Added!");
 				console.log(res.data);
 			router.push('/admin/blog/category');
 			}).catch((e)=>{
-				setError(e.response.data.message)
+				//setError(e.response.data.message)
 			});
 		  }
 		  else{
-			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`,{name, desc, parentId})
+			await http.put(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/update/${id}/${oldParentId}`,{name, desc, parentId})
 			.then((res)=>{
 			notify("success", "successfully Added!");
 				console.log(res.data);
 			router.push('/admin/blog/category');
 			}).catch((e)=>{
-				setError(e.response.data.message)
+				//setError(e.response.data.message)
 			});
 		  }
 	   }
@@ -68,7 +100,7 @@ export default function Create() {
     <>
      <div className="page-header">
         <div>
-            <h1 className="page-title">Create Categories</h1>
+            <h1 className="page-title">Update Category</h1>
           
         </div>
         <div className="ms-auto pageheader-btn">
@@ -84,7 +116,7 @@ export default function Create() {
 		<div className="col-lg-9 col-xl-9 col-md-12 col-sm-12">
 			<div className="card">
 				<div className="card-header">
-					<h3 className="card-title">Create Blog Category</h3>
+					<h3 className="card-title">Update Blog Category</h3>
 				</div>
 				{formError && (
 					<div className="card-header">
@@ -95,21 +127,21 @@ export default function Create() {
 
 					<div className="form-group">
 						<label htmlFor="exampleInputname">Category Name</label>
-						<input type="text" className="form-control" onChange={(e)=>setName(e.target.value)}  id="exampleInputname" placeholder="Category Name" />
+						<input type="text" className="form-control" onChange={(e)=>setName(e.target.value)} value={name} id="exampleInputname" placeholder="Category Name" />
                       
 					</div>
 
 					<div className="form-group">
 						<label htmlFor="exampleInputContent">Category Description</label>
 						<div className="ql-wrapper ql-wrapper-demo bg-light">
-                            <textarea style={{height: '200px'}} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
+                            <textarea style={{height: '200px'}} value={desc} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
 						</div>
 					</div>
 
 				</div>
 				<div className="card-footer text-end">
 					<button type="submit" className="btn btn-success mt-1">
-                        Create
+                        Update
                     </button>
 				</div>
 			</div>
@@ -137,10 +169,10 @@ export default function Create() {
 
 											<ul className="transfer-double-group-list-ul transfer-double-group-list-ul-1636878492751">
 
-												{data.map((item, index)=>(
+												{categoryChild.map((item, index)=>(
                                                 <li key={index} className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
 													<div className="checkbox-group">
-														<input type="checkbox" onChange={(e)=>setparentId(e.target.value)} value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
+														<input type="checkbox" onChange={(e)=>setparentId(e.target.value)} value={item._id} checked={item._id == parentId ? true : false} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
 													</div>
 													
 													{/* {item.childs.map((child, i)=>(
@@ -148,7 +180,7 @@ export default function Create() {
 													))} */}
 
 														{item?.childs?.length != 0 && (
-														<ChildCategories item={item} subCat={subCat}/>
+														<EditChildCategories item={item} subCat={subCat} parentId={parentId}/>
 														)}
 						
 												</li>
@@ -183,7 +215,8 @@ export default function Create() {
 
                     <div className="form-group">
 						<label className="form-label">Category Image</label>
-                        <input type="file"  onChange={(e) => setFile(e.target.files[0])} className="dropify form-control" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
+                        <input type="file"  onChange={(e) => setFile(e.target.files[0])} className=" form-control"  name="image" />
+						{image && <img  src={image} alt="" />}
 					</div>
 				</div>
 			</div>
@@ -194,7 +227,7 @@ export default function Create() {
   );
 }
 
-Create.getLayout = function getLayout(page) {
+Update.getLayout = function getLayout(page) {
     return (
       <Layout>
         {page}

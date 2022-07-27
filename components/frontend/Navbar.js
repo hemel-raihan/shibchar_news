@@ -1,8 +1,10 @@
 import Link from "next/link";
-
+import useFetch from '../../hooks/useFetch';
+import NavChild from './NavChild';
 
 export default function Navbar() {
   
+    const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories/child")
 
   return (
     <>
@@ -45,168 +47,16 @@ export default function Navbar() {
                 <nav className="primary-menu">
 
                     <ul className="menu-container">
-                        <li className="menu-item">
-                            <a className="menu-link" href="index.html"><div>Home</div></a>
-                            <ul className="sub-menu-container">
-                                <li className="menu-item">
-                                    <a className="menu-link" href="intro.html#section-niche"><div>Niche Demos</div></a>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="intro.html#section-onepage"><div>One-Page Demos</div></a>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-corporate.html"><div>Home - Corporate</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-corporate.html"><div>Corporate - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-corporate-2.html"><div>Corporate - Layout 2</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-corporate-3.html"><div>Corporate - Layout 3</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-corporate-4.html"><div>Corporate - Layout 4</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-portfolio.html"><div>Home - Portfolio</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-portfolio.html"><div>Portfolio - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-portfolio-2.html"><div>Portfolio - Layout 2</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-portfolio-3.html"><div>Portfolio - Masonry</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-portfolio-4.html"><div>Portfolio - AJAX</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-blog.html"><div>Home - Blog</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-blog.html"><div>Blog - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-blog-2.html"><div>Blog - Layout 2</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-blog-3.html"><div>Blog - Layout 3</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-shop.html"><div>Home - Shop</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-shop.html"><div>Shop - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-shop-2.html"><div>Shop - Layout 2</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-magazine.html"><div>Home - Magazine</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-magazine.html"><div>Magazine - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-magazine-2.html"><div>Magazine - Layout 2</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-magazine-3.html"><div>Magazine - Layout 3</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="landing.html"><div>Home - Landing Page</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="landing.html"><div>Landing Page - Layout 1</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="landing-2.html"><div>Landing Page - Layout 2</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="landing-3.html"><div>Landing Page - Layout 3</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="landing-4.html"><div>Landing Page - Layout 4</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="landing-5.html"><div>Landing Page - Layout 5</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-fullscreen-image.html"><div>Home - Full Screen</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-fullscreen-image.html"><div>Full Screen - Image</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-fullscreen-slider.html"><div>Full Screen - Slider</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-fullscreen-video.html"><div>Full Screen - Video</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item">
-                                    <a className="menu-link" href="index-onepage.html"><div>Home - One Page</div></a>
-                                    <ul className="sub-menu-container">
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-onepage.html"><div>One Page - Default</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-onepage-2.html"><div>One Page - Submenu</div></a>
-                                        </li>
-                                        <li className="menu-item">
-                                            <a className="menu-link" href="index-onepage-3.html"><div>One Page - Dots Style</div></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li className="menu-item mega-menu mega-menu-small">
-                                    <a className="menu-link" href="#"><div>Extras</div></a>
-                                    <div className="mega-menu-content">
-                                        <div className="row mx-0">
-                                            <ul className="sub-menu-container mega-menu-column col">
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-wedding.html"><div>Wedding</div></a>
-                                                </li>
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-restaurant.html"><div>Restaurant</div></a>
-                                                </li>
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-events.html"><div>Events</div></a>
-                                                </li>
-                                            </ul>
-                                            <ul className="sub-menu-container mega-menu-column col">
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-parallax.html"><div>Parallax</div></a>
-                                                </li>
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-app-showcase.html"><div>App Showcase</div></a>
-                                                </li>
-                                                <li className="menu-item">
-                                                    <a className="menu-link" href="index-boxed.html"><div>Boxed Layout</div></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li className="menu-item">
+                        {data.map((item, index)=>(
+                            <li key={index} className="menu-item">
+                                <a className="menu-link" href="index.html"><div>{item.name}</div></a>
+                                {item?.childs?.length != 0 && (
+                                    <NavChild item={item} />
+                                )}
+                            </li>
+                        ))}
+                        
+                        {/* <li className="menu-item">
                             <a className="menu-link" href="#"><div>Features</div></a>
                             <ul className="sub-menu-container">
                                 <li className="menu-item">
@@ -615,8 +465,8 @@ export default function Navbar() {
                                     </div>
                                 </li>
                             </ul>
-                        </li>
-                        <li className="menu-item mega-menu">
+                        </li> */}
+                        {/* <li className="menu-item mega-menu">
                             <a className="menu-link" href="#"><div>Pages</div></a>
                             <div className="mega-menu-content mega-menu-style-2">
                                 <div className="container">
@@ -904,8 +754,8 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li className="menu-item mega-menu">
+                        </li> */}
+                        {/* <li className="menu-item mega-menu">
                             <a className="menu-link" href="#"><div>Portfolio</div></a>
                             <div className="mega-menu-content mega-menu-style-2">
                                 <div className="container">
@@ -1038,8 +888,8 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li className="menu-item mega-menu">
+                        </li> */}
+                        {/* <li className="menu-item mega-menu">
                             <a className="menu-link" href="#"><div>Blog</div></a>
                             <div className="mega-menu-content mega-menu-style-2">
                                 <div className="container">
@@ -1179,8 +1029,8 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                        </li>
-                        <li className="menu-item">
+                        </li> */}
+                        {/* <li className="menu-item">
                             <a className="menu-link" href="shop.html"><div>Shop</div></a>
                             <ul className="sub-menu-container">
                                 <li className="menu-item">
@@ -1270,8 +1120,8 @@ export default function Navbar() {
                                     <a className="menu-link" href="checkout.html"><div>Checkout</div></a>
                                 </li>
                             </ul>
-                        </li>
-                        <li className="menu-item mega-menu">
+                        </li> */}
+                        {/* <li className="menu-item mega-menu">
                             <a className="menu-link" href="#"><div>Shortcodes</div></a>
                             <div className="mega-menu-content">
                                 <div className="container">
@@ -1439,7 +1289,7 @@ export default function Navbar() {
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> */}
                     </ul>
 
                 </nav>

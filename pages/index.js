@@ -1,9 +1,14 @@
 
 import FrontLayout from '../components/frontend/FrontLayout';
+import Header from '../components/frontend/Header';
+
+
 
 export default function Home() {
   return (
     <>
+    <Header title={'Home'} />
+
     <section id="content">
     <div className="content-wrap">
 
@@ -36,14 +41,14 @@ export default function Home() {
             <div className="row gutter-40 col-mb-80">
                 <div className="postcontent col-lg-9">
 
-                    <div className="row col-mb-50 mb-0">
-                        <div className="col-md-7">
+                    <div className="row mt-50 col-mb-50 mb-0">
+                        <div className="col-md-12">
                             <div className="fslider flex-thumb-grid grid-6" data-speed="400" data-arrows="true" data-thumbs="true" data-easing="easeOutQuad">
                                 <div className="flexslider">
                                     <div className="slider-wrap">
-                                        <div className="slide" data-thumb="images/magazine/thumb/1.jpg">
+                                        <div className="slide" data-thumb="/assets/frontend/images/slider/2.jpg">
                                             <a href="#">
-                                                <img src="images/magazine/1.jpg" alt="Image" />
+                                                <img src="/assets/frontend/images/slider/2.jpg" alt="Image" />
                                                 <div className="bg-overlay">
                                                     <div className="bg-overlay-content text-overlay-mask desc-sm dark desc-sm align-items-end justify-content-start p-4">
                                                         <div className="portfolio-desc py-0">
@@ -54,9 +59,9 @@ export default function Home() {
                                                 </div>
                                             </a>
                                         </div>
-                                        <div className="slide" data-thumb="images/magazine/thumb/2.jpg">
+                                        <div className="slide" data-thumb="/assets/frontend/images/slider/3.jpg">
                                             <a href="#">
-                                                <img src="images/magazine/2.jpg" alt="Image" />
+                                                <img src="/assets/frontend/images/slider/3.jpg" alt="Image" />
                                                 <div className="bg-overlay">
                                                     <div className="bg-overlay-content text-overlay-mask desc-sm dark desc-sm align-items-end justify-content-start p-4">
                                                         <div className="portfolio-desc py-0">
@@ -67,54 +72,12 @@ export default function Home() {
                                                 </div>
                                             </a>
                                         </div>
-                                        <div className="slide" data-thumb="images/magazine/thumb/3.jpg">
-                                            <a href="#">
-                                                <img src="images/magazine/3.jpg" alt="Image" />
-                                                <div className="bg-overlay">
-                                                    <div className="bg-overlay-content text-overlay-mask desc-sm dark desc-sm align-items-end justify-content-start p-4">
-                                                        <div className="portfolio-desc py-0">
-                                                            <h3>Locked Steel Gate</h3>
-                                                            <span>Technology</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div className="slide" data-thumb="images/magazine/thumb/4.jpg">
-                                            <iframe src="https://player.vimeo.com/video/99895335" width="500" height="281" allow="autoplay; fullscreen" allowfullscreen></iframe>
-                                        </div>
-                                        <div className="slide" data-thumb="images/magazine/thumb/5.jpg">
-                                            <a href="#">
-                                                <img src="images/magazine/5.jpg" alt="Image" />
-                                                <div className="bg-overlay">
-                                                    <div className="bg-overlay-content text-overlay-mask desc-sm dark desc-sm align-items-end justify-content-start p-4">
-                                                        <div className="portfolio-desc py-0">
-                                                            <h3>Locked Steel Gate</h3>
-                                                            <span><i className="icon-star3 me-1"></i><i className="icon-star3 me-1"></i><i className="icon-star3 me-1"></i><i className="icon-star-half-full me-1"></i><i className="icon-star-empty"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div className="slide" data-thumb="images/magazine/thumb/6.jpg">
-                                            <a href="#">
-                                                <img src="images/magazine/6.jpg" alt="Image" />
-                                                <div className="bg-overlay">
-                                                    <div className="bg-overlay-content text-overlay-mask desc-sm dark desc-sm align-items-end justify-content-start p-4">
-                                                        <div className="portfolio-desc py-0">
-                                                            <h3>Locked Steel Gate</h3>
-                                                            <span>Entertainment</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="col-md-5">
+                        {/* <div className="col-md-5">
 
                             <div className="posts-sm row col-mb-30">
                                 <div className="entry col-12">
@@ -148,7 +111,7 @@ export default function Home() {
                                 </div>
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="row col-mb-50 mb-0">

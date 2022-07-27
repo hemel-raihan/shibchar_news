@@ -3309,8 +3309,8 @@ html[xmlns] .slider-wrap {
         left: 0;
 		/* left: 50;
         max-width: 57.5%; */
-		/* background-color: #fff; */
-		box-shadow: 0 0 10px rgba(0,0,0,0.1);
+		background-color: #fff;
+		/* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
 	}
 
 	.sticky-header.full-header #header-wrap {
@@ -15534,7 +15534,7 @@ label.checkbox { padding-left: 20px; }
 
 .stretched #wrapper {
 	width: 100%;
-	margin: 0;
+	/* margin: 0; */
 	box-shadow: none;
 }
 
