@@ -88,10 +88,7 @@ class MyDocument extends Document {
 
       <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
 
-      {/* Frontend */}
-      <script src="/assets/frontend/js/jquery.js"></script>
-      <script src="/assets/frontend/js/plugins.min.js"></script>
-      <script src="/assets/frontend/js/functions.js"></script>
+    
         </body>
       </Html>
     )
