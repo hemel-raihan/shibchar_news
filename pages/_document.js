@@ -54,7 +54,7 @@ class MyDocument extends Document {
 
      
 
-      {/* <script src="/assets/plugins/jquery/jquery.min.js"></script>
+      <script src="/assets/plugins/jquery/jquery.min.js"></script>
       <script src="/assets/plugins/bootstrap/js/popper.min.js"></script>
       <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
           
@@ -65,7 +65,7 @@ class MyDocument extends Document {
       <script src="/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
       <script src="/assets/plugins/p-scroll/pscroll.js"></script>
       <script src="/assets/plugins/p-scroll/pscroll-1.js"></script>
-      <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script> */}
+      <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
 
       {/* Frontend */}
       

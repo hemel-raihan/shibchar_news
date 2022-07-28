@@ -35,7 +35,7 @@ const Layout=({children} )=> {
 		    <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/icon_font/icon_font.css" />
    </Head>
 
-   <Script
+   {/* <Script
         src="/assets/plugins/jquery/jquery.min.js"
         strategy="lazyOnload"
         onLoad={() =>
@@ -104,7 +104,7 @@ const Layout=({children} )=> {
         onLoad={() =>
           console.log(`script loaded correctly, window.FB has been populated`)
         }
-    />
+    /> */}
 
         <div className="app sidebar-mini">
         <div className="page">
