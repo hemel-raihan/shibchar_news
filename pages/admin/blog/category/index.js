@@ -17,7 +17,8 @@ export default function tableList() {
   }, []);
 
   const [data, setData] = useState();
-console.log(data)
+  const [formError, setError] = useState("");
+
   const {http} = Axios();
 
   //const {data, loading, error, reFetch} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories?page=${pageNumber}`)
@@ -39,8 +40,11 @@ useEffect(() => {
     .then((res)=>{
       notify("success", "successfully has been deleted!");
     //   setLoading(false);
+    }).catch((e)=>{
+        setError(e.response.data.message)
     });
-    reFetch()
+    fetchData()
+    //reFetch()
  }
 
 //   if (loading)
@@ -79,6 +83,11 @@ useEffect(() => {
                 <div className="card-header">
                     <h3 className="card-title">All Categories</h3>
                 </div>
+                {formError && (
+					<div className="card-header">
+						<h3 style={{color: 'red'}} className="card-title">{formError}</h3>
+					</div>
+				)}
             <div className="card-body">
                 <div className="table-responsive export-table">
                     <table id="file-datatable" className="table table-bordered text-nowrap key-buttons border-bottom  w-100">
