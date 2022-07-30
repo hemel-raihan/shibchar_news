@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React,{ useState, useEffect } from "react";
 import Link  from 'next/link';
 //import moment from 'moment';
 import toast from "../../../../components/admin/Toast/index";
@@ -7,6 +7,8 @@ import Layout from "../../../../components/admin/Layout"
 import Axios from '../../../../hooks/axios';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Pagination from "react-js-pagination";
+import axios from 'axios';
 
 export default function tableList() {
 
@@ -14,9 +16,21 @@ export default function tableList() {
     toast({ type, message });
   }, []);
 
+  const [data, setData] = useState();
+console.log(data)
   const {http} = Axios();
 
-  const {data, loading, error, reFetch} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`)
+  //const {data, loading, error, reFetch} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories?page=${pageNumber}`)
+
+  const fetchData = async (pageNumber = 1) => {
+    
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories?page=${pageNumber}`);
+    setData(res.data);
+};
+
+useEffect(() => {
+    fetchData();
+}, [])
 
  async function deleteCategory(id, parentId)
  {
@@ -29,14 +43,14 @@ export default function tableList() {
     reFetch()
  }
 
-  if (loading)
-    return (
-      <>
-        <div id="global-loader">
-			<img src="/assets/images/loader.svg" className="loader-img" alt="Loader" />
-		</div>
-      </>
-    );
+//   if (loading)
+//     return (
+//       <>
+//         <div id="global-loader">
+// 			<img src="/assets/images/loader.svg" className="loader-img" alt="Loader" />
+// 		</div>
+//       </>
+//     );
 
   return (
     <>
@@ -78,8 +92,8 @@ export default function tableList() {
                             </tr>
                         </thead>
                         <tbody>
-                        {data &&
-                        data.map((category, index) => (
+                        {data?.data &&
+                        data?.data.map((category, index) => (
                             <tr key={index}>
                                 <td>{category.name}</td>
                                 <td>
@@ -109,6 +123,22 @@ export default function tableList() {
                             ))}
                         </tbody>
                     </table>
+
+                    <div>
+                        <Pagination
+                            activePage={data?.currentPage ? data?.currentPage : 0}
+                            itemsCountPerPage={data?.perPage ? data?.perPage : 0 }
+                            totalItemsCount={data?.total ? data?.total : 0}
+                            onChange={(pageNumber) => {
+                                fetchData(pageNumber)
+                            }}
+                            pageRangeDisplayed={8}
+                            itemClass="page-item"
+                            linkClass="page-link"
+                            firstPageText="First Page"
+                            lastPageText="Last Lage"
+                        />
+                    </div>
 
                     </div>
 
