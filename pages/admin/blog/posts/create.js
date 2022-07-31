@@ -21,14 +21,14 @@ export default function Create() {
 
 	const [formError, setError] = useState("");
 
-	const [name, setName] = useState("");
-	var slug = name.replace(/\s+/g, '-').toLowerCase();
+	const [title, setTitle] = useState("");
+	var slug = title.replace(/\s+/g, '-').toLowerCase();
     const [desc, setDesc] = useState(""); 
-    const [parentId, setparentId] = useState();
+    const [categoryId, setcategoryId] = useState();
 	const [file, setFile] = useState("");
 
 	const subCat = (subItem) =>{
-		setparentId(subItem);
+		setcategoryId(subItem);
 	}
 
 	async function submitForm(e) {
@@ -36,29 +36,30 @@ export default function Create() {
 		if (file) {
 			const formData =new FormData();
 			const filename = Date.now() + file.name;
-			formData.append("name", name);
+			formData.append("imageName", filename);
+			formData.append("title", title);
 			formData.append("slug", slug);
 			formData.append("file", file);
-			if(parentId){
-				formData.append("parentId", parentId);
+			if(categoryId){
+				formData.append("categoryId", categoryId);
 			}
 			formData.append("desc", desc);
 
-			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/create`,formData)
+			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/posts`,formData)
 			.then((res)=>{
 			notify("success", "successfully Added!");
 				console.log(res.data);
-			router.push('/admin/blog/category');
+			router.push('/admin/blog/posts');
 			}).catch((e)=>{
 				setError(e.response.data.message)
 			});
 		  }
 		  else{
-			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories`,{name, slug, desc, parentId})
+			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/posts`,{title, slug, desc, categoryId})
 			.then((res)=>{
 			notify("success", "successfully Added!");
 				console.log(res.data);
-			router.push('/admin/blog/category');
+			router.push('/admin/blog/posts');
 			}).catch((e)=>{
 				setError(e.response.data.message)
 			});
@@ -69,12 +70,12 @@ export default function Create() {
     <>
      <div className="page-header">
         <div>
-            <h1 className="page-title">Create Categories</h1>
+            <h1 className="page-title">Create Post</h1>
           
         </div>
         <div className="ms-auto pageheader-btn">
             <Link href="/admin/blog/category">
-            <a  className="btn btn-primary btn-icon text-white me-2">Back To CategoryList</a>
+            <a  className="btn btn-primary btn-icon text-white me-2">Back To PostList</a>
             </Link>
             
         </div>
@@ -95,12 +96,13 @@ export default function Create() {
 				<div className="card-body">
 
 					<div className="form-group">
-						<label htmlFor="exampleInputname">Category Name</label>
-						<input type="text" className="form-control" onChange={(e)=>setName(e.target.value)}  id="exampleInputname" placeholder="Category Name" />
+						<label htmlFor="exampleInputname">Post Title</label>
+						<input type="text" className="form-control" onChange={(e)=>setTitle(e.target.value)}  id="exampleInputname" placeholder="Write your Post Tile" />
+                      
 					</div>
 
 					<div className="form-group">
-						<label htmlFor="exampleInputContent">Category Description</label>
+						<label htmlFor="exampleInputContent">Post Description</label>
 						<div className="ql-wrapper ql-wrapper-demo bg-light">
                             <textarea style={{height: '200px'}} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
 						</div>
@@ -120,7 +122,7 @@ export default function Create() {
 
 			<div className="card shadow-none border">
 				<div className="card-header">
-					<h5 className="card-title">Parent Category</h5>
+					<h5 className="card-title">Select Category</h5>
 				</div>
 				<div className="card-body" style={{padding: '2px'}}>
 					<div className="transfer">
@@ -140,12 +142,8 @@ export default function Create() {
 												{data.map((item, index)=>(
                                                 <li key={index} className="transfer-double-group-list-li transfer-double-group-list-li-1636878492751">
 													<div className="checkbox-group">
-														<input type="checkbox" onChange={(e)=>setparentId(e.target.value)} value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
+														<input type="checkbox" onChange={(e)=>setcategoryId(e.target.value)} value={item._id} className="checkbox-normal group-select-all-1636878492751" id={`group_${index}_1636878492751`} /><label htmlFor={`group_${index}_1636878492751`} className="group-name-1636878492751">{item.name}</label>
 													</div>
-													
-													{/* {item.childs.map((child, i)=>(
-														<ChildCategories child={child} item={item} i={i}/>
-													))} */}
 
 														{item?.childs?.length != 0 && (
 														<ChildCategories item={item} subCat={subCat}/>
@@ -168,7 +166,7 @@ export default function Create() {
 
 			<div className="card">
 				<div className="card-header">
-					<h3 className="card-title">Create Page</h3>
+					<h3 className="card-title">Select Image</h3>
 				</div>
 				<div className="card-body">
 
@@ -182,8 +180,9 @@ export default function Create() {
 
 
                     <div className="form-group">
-						<label className="form-label">Category Image</label>
-                        <input type="file"  onChange={(e) => setFile(e.target.files[0])} className="dropify form-control" data-default-file="{{ isset($category) ? asset('uploads/category/'.$category->image) : '' }}" name="image" />
+						<label className="form-label">Feature Image</label>
+                        <input type="file"  onChange={(e) => setFile(e.target.files[0])} className="dropify form-control" name="image" />
+						{file && <img  src={URL.createObjectURL(file)} alt="" />}
 					</div>
 				</div>
 			</div>

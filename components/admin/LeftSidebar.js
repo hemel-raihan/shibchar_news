@@ -31,6 +31,8 @@ export default function LeftSidebar() {
                                 <a className="side-menu__item" data-bs-toggle="slide"><i className="side-menu__icon fe fe-globe"></i><span className="side-menu__label">Blog Management</span><i className="angle fa fa-angle-right"></i></a>
                             </Link>
 							<ul className="slide-menu">
+							    <li><Link href="/admin/blog/posts/create"><a className="slide-item">Add Post</a></Link></li>
+								<li><Link href="/admin/blog/posts"><a className="slide-item">All Posts</a></Link></li>
 								<li><Link href="/admin/blog/category/create"><a className="slide-item">Add Category</a></Link></li>
 								<li><Link href="/admin/blog/category"><a className="slide-item">All Categories</a></Link></li>
 							</ul>

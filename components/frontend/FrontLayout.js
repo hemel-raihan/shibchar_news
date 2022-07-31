@@ -2,6 +2,7 @@
 import Header from '../admin/Header';
 import Navbar from './Navbar';
 import FrontFooter from './FrontFooter';
+import RightSidebar from './RightSidebar';
 
 
 const FrontLayout=({children} )=> {
@@ -16,13 +17,20 @@ const FrontLayout=({children} )=> {
 
             <section id="content">
               <div className="content-wrap">
-
-                  {children}
-
+                <div className="container clearfix">
+                    <div className="row gutter-40 col-mb-80" style={{marginTop: '30px'}}>
+                        <div className="postcontent col-lg-9">
+                            {children}
+                        </div>
+                        <div className="sidebar col-lg-3">
+                          <RightSidebar />
+                        </div>
+                    </div>
+                </div>
               </div>
             </section>
 
-               <FrontFooter />
+            <FrontFooter />
 
           </div>
 

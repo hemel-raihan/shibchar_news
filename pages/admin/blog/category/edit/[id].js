@@ -26,6 +26,7 @@ export default function Update() {
 	const [formError, setError] = useState("");
 
 	const [name, setName] = useState("");
+	var slug = name.replace(/\s+/g, '-').toLowerCase();
     const [desc, setDesc] = useState(""); 
     const [parentId, setparentId] = useState();
 	const [oldParentId, setOldparentId] = useState();
@@ -69,6 +70,7 @@ export default function Update() {
 			const filename = Date.now() + file.name;
 			formData.append("imageName", filename);
 			formData.append("name", name);
+			formData.append("slug", slug);
 			formData.append("file", file);
 			if(parentId){
 				formData.append("parentId", parentId);
@@ -85,7 +87,7 @@ export default function Update() {
 			});
 		  }
 		  else{
-			await http.put(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/update/${id}/${oldParentId}`,{name, desc, parentId})
+			await http.put(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/update/${id}/${oldParentId}`,{name, slug, desc, parentId})
 			.then((res)=>{
 			notify("success", "successfully Added!");
 				console.log(res.data);

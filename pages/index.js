@@ -1,16 +1,20 @@
 
 import FrontLayout from '../components/frontend/FrontLayout';
 import Header from '../components/frontend/Header';
-
-
+import useFetch from '../hooks/useFetch';
+import moment from 'moment';
+import Link from "next/link";
 
 export default function Home() {
+
+    const {data, loading, error} = useFetch("http://localhost:5000/api/home/categories/posts")
+//console.log(data.data?.posts)
   return (
     <>
     <Header title={'Home'} />
 
-    <section id="content">
-    <div className="content-wrap">
+    {/* <section id="content">
+    <div className="content-wrap"> */}
 
         <div className="section header-stick bottommargin-lg py-3">
             <div className="container">
@@ -36,10 +40,10 @@ export default function Home() {
             </div>
         </div>
 
-        <div className="container clearfix">
+        {/* <div className="container clearfix"> */}
 
-            <div className="row gutter-40 col-mb-80">
-                <div className="postcontent col-lg-9">
+            {/* <div className="row gutter-40 col-mb-80"> */}
+                {/* <div className="postcontent col-lg-9"> */}
 
                     <div className="row mt-50 col-mb-50 mb-0">
                         <div className="col-md-12">
@@ -115,81 +119,47 @@ export default function Home() {
                     </div>
 
                     <div className="row col-mb-50 mb-0">
-                        <div className="col-12">
-
+                    {data?.data?.map((category, index)=>(
+                        <>
+                        {category?.posts?.length != 0 && (
+                            <div key={index} className="col-12">
                             <div className="fancy-title title-border">
-                                <h3>Technology</h3>
+                                <h3>{category.name}</h3>
                             </div>
 
                             <div className="row posts-md col-mb-30">
-                                <div className="entry col-sm-6 col-md-4">
+                                {category?.posts.map((post, i)=>(
+                                <div key={i} className="entry col-sm-6 col-md-4">
                                     <div className="grid-inner">
                                         <div className="entry-image">
-                                            <a href="#"><img src="images/magazine/thumb/11.jpg" alt="Image" /></a>
+                                            <a href="#"><img src={post.photo} alt="Image" /></a>
                                         </div>
                                         <div className="entry-title title-xs nott">
-                                            <h3><a href="blog-single.html">Toyotas next minivan will let you shout at your kids without turning around</a></h3>
+                                            <h3><Link href={`news/${post.slug}/${post._id}`}>
+                                                   <a>{post.title}</a>
+                                                </Link></h3>
                                         </div>
                                         <div className="entry-meta">
                                             <ul>
-                                                <li><i className="icon-calendar3"></i> 10th Nov 2021</li>
-                                                <li><a href="blog-single.html#comments"><i className="icon-comments"></i> 15</a></li>
+                                                <li><i className="icon-calendar3"></i>{moment(post.createdAt).format('Do MMMM YYYY')}</li>
                                             </ul>
                                         </div>
                                         <div className="entry-content">
-                                            <p className="mb-0">Neque nesciunt molestias soluta esse debitis. Magni impedit quae consectetur consequuntur.</p>
+                                            <p className="mb-0">{post.desc.substring(0, 150)}</p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div className="entry col-sm-6 col-md-4">
-                                    <div className="grid-inner">
-                                        <div className="entry-image">
-                                            <a href="#"><img src="images/magazine/thumb/14.jpg" alt="Image" /></a>
-                                        </div>
-                                        <div className="entry-title title-xs nott">
-                                            <h3><a href="blog-single.html">UK government weighs Tesla's Model S for its ??5 million electric vehicle fleet</a></h3>
-                                        </div>
-                                        <div className="entry-meta">
-                                            <ul>
-                                                <li><i className="icon-calendar3"></i> 13th Nov 2021</li>
-                                                <li><a href="blog-single.html#comments"><i className="icon-comments"></i> 25</a></li>
-                                            </ul>
-                                        </div>
-                                        <div className="entry-content">
-                                            <p className="mb-0">Eaque iusto quod assumenda beatae, nesciunt aliquid. Vel, eos eligendi?</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="entry col-sm-6 col-md-4">
-                                    <div className="grid-inner">
-                                        <div className="entry-image">
-                                            <a href="#"><img src="images/magazine/thumb/15.jpg" alt="Image" /></a>
-                                        </div>
-                                        <div className="entry-title title-xs nott">
-                                            <h3><a href="blog-single.html">Combat malaria positive social change civil society. Fundraise inspire.</a></h3>
-                                        </div>
-                                        <div className="entry-meta">
-                                            <ul>
-                                                <li><i className="icon-calendar3"></i> 19th Dec 2021</li>
-                                                <li><a href="blog-single.html#comments"><i className="icon-comments"></i> 19</a></li>
-                                            </ul>
-                                        </div>
-                                        <div className="entry-content">
-                                            <p className="mb-0">Combat malaria positive social change civil society fundraise inspire.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
-
                         </div>
-
+                       )}
+                        </>
+                        ))}
                         <div className="col-12">
                             <img src="images/magazine/ad.jpg" alt="Ad" className="aligncenter my-0" />
                         </div>
 
-                        <div className="col-12">
+                        {/* <div className="col-12">
 
                             <div className="fancy-title title-border">
                                 <h3>Entertainment</h3>
@@ -257,7 +227,7 @@ export default function Home() {
                                 </div>
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="w-100"></div>
@@ -692,300 +662,16 @@ export default function Home() {
 
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
 
-                <div className="sidebar col-lg-3">
-                    <div className="sidebar-widgets-wrap">
+                {/* <div className="sidebar col-lg-3">
+                    
 
-                        <div className="widget clearfix">
-                            <div className="row gutter-20 col-mb-30">
-                                <div className="col-4">
-                                    <a href="#" className="social-icon si-dark si-colored si-facebook mb-0" style={{marginRight: '10px'}}>
-                                        <i className="icon-facebook"></i>
-                                        <i className="icon-facebook"></i>
-                                    </a>
-                                    <div className="counter counter-inherit d-inline-block text-smaller"><span className="d-block fw-bold" data-from="1000" data-to="58742" data-refresh-interval="100" data-speed="3000" data-comma="true"></span><small>Likes</small></div>
-                                </div>
+                </div> */}
 
-                                <div className="col-4">
-                                    <a href="#" className="social-icon si-dark si-colored si-twitter mb-0" style={{marginRight: '10px'}}>
-                                        <i className="icon-twitter"></i>
-                                        <i className="icon-twitter"></i>
-                                    </a>
-                                    <div className="counter counter-inherit d-inline-block text-smaller"><span className="d-block fw-bold" data-from="500" data-to="9654" data-refresh-interval="50" data-speed="2500" data-comma="true"></span><small>Followers</small></div>
-                                </div>
+            {/* </div> */}
 
-                                <div className="col-4">
-                                    <a href="#" className="social-icon si-dark si-colored si-rss mb-0" style={{marginRight: '10px'}}>
-                                        <i className="icon-rss"></i>
-                                        <i className="icon-rss"></i>
-                                    </a>
-                                    <div className="counter counter-inherit d-inline-block text-smaller"><span className="d-block fw-bold" data-from="200" data-to="15475" data-refresh-interval="150" data-speed="3500" data-comma="true"></span><small>Readers</small></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="widget clearfix">
-
-                            <img className="aligncenter" src="images/magazine/ad.png" alt="Image" />
-
-                        </div>
-
-                        <div className="widget widget_links clearfix">
-
-                            <h4>Categories</h4>
-
-                            <div className="row col-mb-50">
-                                <div className="col-ms-6">
-                                    <ul>
-                                        <li><a href="#">World</a></li>
-                                        <li><a href="#">Technology</a></li>
-                                        <li><a href="#">Entertainment</a></li>
-                                        <li><a href="#">Sports</a></li>
-                                        <li><a href="#">Media</a></li>
-                                        <li><a href="#">Politics</a></li>
-                                        <li><a href="#">Business</a></li>
-                                    </ul>
-                                </div>
-                                <div className="col-ms-6">
-                                    <ul>
-                                        <li><a href="#">Lifestyle</a></li>
-                                        <li><a href="#">Travel</a></li>
-                                        <li><a href="#">Cricket</a></li>
-                                        <li><a href="#">Football</a></li>
-                                        <li><a href="#">Education</a></li>
-                                        <li><a href="#">Photography</a></li>
-                                        <li><a href="#">Nature</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div className="widget clearfix">
-
-                            <h4>Twitter Feed Scroller</h4>
-                            <div className="fslider customjs testimonial twitter-scroll twitter-feed" data-username="envato" data-count="3" data-animation="slide" data-arrows="false">
-                                <i className="i-plain i-small color icon-twitter mb-0" style={{marginRight: '15px'}}></i>
-                                <div className="flexslider" style={{width: 'auto'}}>
-                                    <div className="slider-wrap">
-                                        <div className="slide"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div className="widget clearfix">
-
-                            <h4>Flickr Photostream</h4>
-                            <div id="flickr-widget" className="flickr-feed masonry-thumbs grid-container grid-5" data-id="613394@N22" data-count="15" data-type="group" data-lightbox="gallery"></div>
-
-                        </div>
-
-                        <div className="widget clearfix">
-
-                            <div className="tabs mb-0 clearfix" id="sidebar-tabs">
-
-                                <ul className="tab-nav clearfix">
-                                    <li><a href="#tabs-1">Popular</a></li>
-                                    <li><a href="#tabs-2">Recent</a></li>
-                                    <li><a href="#tabs-3"><i className="icon-comments-alt me-0"></i></a></li>
-                                </ul>
-
-                                <div className="tab-container">
-
-                                    <div className="tab-content clearfix" id="tabs-1">
-                                        <div className="posts-sm row col-mb-30" id="popular-post-list-sidebar">
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li><i className="icon-comments-alt"></i> 35 Comments</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li><i className="icon-comments-alt"></i> 24 Comments</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li><i className="icon-comments-alt"></i> 19 Comments</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="tab-content clearfix" id="tabs-2">
-                                        <div className="posts-sm row col-mb-30" id="recent-post-list-sidebar">
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Lorem ipsum dolor sit amet, consectetur</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li>10th July 2021</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li>10th July 2021</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <div className="entry-title">
-                                                            <h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-                                                        </div>
-                                                        <div className="entry-meta">
-                                                            <ul>
-                                                                <li>10th July 2021</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="tab-content clearfix" id="tabs-3">
-                                        <div className="posts-sm row col-mb-30" id="recent-comments-list-sidebar">
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <strong>John Doe:</strong> Veritatis recusandae sunt repellat distinctio...
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <strong>Mary Jane:</strong> Possimus libero, earum officia architecto maiores....
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="entry col-12">
-                                                <div className="grid-inner row g-0">
-                                                    <div className="col-auto">
-                                                        <div className="entry-image">
-                                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ps-3">
-                                                        <strong>Site Admin:</strong> Deleniti magni labore laboriosam odio...
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div className="widget clearfix">
-
-                            <img className="aligncenter" src="images/magazine/ad.png" alt="Image" />
-
-                        </div>
-
-                        <div className="widget clearfix">
-                            <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FEnvato&amp;width=240&amp;height=240&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=false&amp;show_border=true&amp;appId=499481203443583" style={{border:'none', overflow:'hidden', width:'240px', height:'240px'}}></iframe>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div className="fancy-title title-border topmargin">
+            {/* <div className="fancy-title title-border topmargin">
                 <h3>Other News</h3>
             </div>
 
@@ -1122,11 +808,11 @@ export default function Home() {
 
             </div>
 
-            <img src="images/magazine/ad.jpg" alt="Ad" className="aligncenter topmargin-lg mb-0" />
+            <img src="images/magazine/ad.jpg" alt="Ad" className="aligncenter topmargin-lg mb-0" /> */}
 
-        </div>
-    </div>
-</section>
+        {/* </div> */}
+    {/* </div>
+</section> */}
     </>
   )
 }
