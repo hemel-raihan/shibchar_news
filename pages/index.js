@@ -135,7 +135,7 @@ export default function Home() {
                                             <a href="#"><img src={post.photo} alt="Image" /></a>
                                         </div>
                                         <div className="entry-title title-xs nott">
-                                            <h3><Link href={`news/${post.slug}/${post._id}`}>
+                                            <h3><Link href={`news/${post.slug}`}>
                                                    <a>{post.title}</a>
                                                 </Link></h3>
                                         </div>

@@ -1,15 +1,16 @@
-
+import React,{ useState, useEffect } from "react";
 import FrontLayout from '../../components/frontend/FrontLayout';
 import Header from '../../components/frontend/Header';
 import useFetch from '../../hooks/useFetch';
 import moment from 'moment';
 import { useRouter } from 'next/router';
-
+import Link from "next/link";
 export default function NewsDetails() {
 
     const router = useRouter();
-	const { slug, id } = router.query;
-    const {data, loading, error} = useFetch(`http://localhost:5000/api/home/post/${id}`)
+	const { slug } = router.query;
+    const {data, loading, error} = useFetch(`http://localhost:5000/api/home/post/${slug}`)
+    var post = data[0];
 
   return (
     <>
@@ -20,46 +21,23 @@ export default function NewsDetails() {
     <div className="entry clearfix">
 
         <div className="entry-title">
-            <h2>{data.title}</h2>
+            <h2>{post?.title}</h2>
         </div>
 
         <div className="entry-meta">
             <ul>
-                <li><i className="icon-calendar3"></i> 10th July 2021</li>
-                <li><a href="#"><i className="icon-user"></i> admin</a></li>
-                <li><i className="icon-folder-open"></i> <a href="#">General</a>, <a href="#">Media</a></li>
-                <li><a href="#"><i className="icon-comments"></i> 43 Comments</a></li>
-                <li><a href="#"><i className="icon-camera-retro"></i></a></li>
+                <li><i className="icon-calendar3"></i>{moment(post?.createdAt).format('Do MMMM YYYY')}</li>
+                <li><a href="#"><i className="icon-user"></i> {post?.category.name}</a></li>
             </ul>
         </div>
 
         <div className="entry-image">
-            <a href="#"><img src="images/blog/full/1.jpg" alt="Blog Single" /></a>
+            <img src={post?.photo} alt="Blog Single" />
         </div>
 
         <div className="entry-content mt-0">
 
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-
-            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. <a href="#">Curabitur blandit tempus porttitor</a>. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
-
-            <blockquote><p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p></blockquote>
-
-            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus.</p>
-
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. <a href="#">Nullam quis risus eget urna</a> mollis ornare vel eu leo. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-
-                {/* <pre>
-                #header-inner {
-                    width: 940px;
-                    margin: 0 auto;
-                    padding-top: 40px;
-                }</pre> */}
-
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-
-            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Donec id elit non mi porta gravida at eget metus. Vestibulum id ligula porta felis euismod semper.</p>
-            
+            {post?.desc}
 
             <div className="tagcloud clearfix bottommargin">
                 <a href="#">general</a>
@@ -132,91 +110,32 @@ export default function NewsDetails() {
     <h4>Related Posts:</h4>
 
     <div className="related-posts row posts-md col-mb-30">
-
-        <div className="entry col-12 col-md-6">
+     {post?.category?.posts.map((relatedPost, index)=>(
+        <>
+        {(relatedPost._id != post?._id) && (
+            <div key={index} className="entry col-12 col-md-6">
             <div className="grid-inner row align-items-center gutter-20">
                 <div className="col-4">
                     <div className="entry-image">
-                        <a href="#"><img src="images/blog/small/10.jpg" alt="Blog Single" /></a>
+                        <Link href={`news/${relatedPost.slug}`}><a><img src={relatedPost.photo} alt="Blog Single" /></a></Link>
                     </div>
                 </div>
                 <div className="col-8">
                     <div className="entry-title title-xs">
-                        <h3><a href="#">This is an Image Post</a></h3>
+                        <h3><Link href={`${relatedPost.slug}`}><a>{relatedPost.title}</a></Link></h3>
                     </div>
                     <div className="entry-meta">
                         <ul>
-                            <li><i className="icon-calendar3"></i> 10th July 2021</li>
-                            <li><a href="#"><i className="icon-comments"></i> 12</a></li>
+                            <li><i className="icon-calendar3"></i>{moment(relatedPost?.createdAt).format('Do MMMM YYYY')}</li>
+                            <li><a href="#"><i className="icon-comments"></i> {relatedPost?.category.name}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div className="entry col-12 col-md-6">
-            <div className="grid-inner row align-items-center gutter-20">
-                <div className="col-4">
-                    <div className="entry-image">
-                        <a href="#"><img src="images/blog/small/20.jpg" alt="Blog Single" /></a>
-                    </div>
-                </div>
-                <div className="col-8">
-                    <div className="entry-title title-xs">
-                        <h3><a href="#">This is a Video Post</a></h3>
-                    </div>
-                    <div className="entry-meta">
-                        <ul>
-                            <li><i className="icon-calendar3"></i> 24th July 2021</li>
-                            <li><a href="#"><i className="icon-comments"></i> 16</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div className="entry col-12 col-md-6">
-            <div className="grid-inner row align-items-center gutter-20">
-                <div className="col-4">
-                    <div className="entry-image">
-                        <a href="#"><img src="images/blog/small/21.jpg" alt="Blog Single" /></a>
-                    </div>
-                </div>
-                <div className="col-8">
-                    <div className="entry-title title-xs">
-                        <h3><a href="#">This is a Gallery Post</a></h3>
-                    </div>
-                    <div className="entry-meta">
-                        <ul>
-                            <li><i className="icon-calendar3"></i> 8th Aug 2021</li>
-                            <li><a href="#"><i className="icon-comments"></i> 8</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div className="entry col-12 col-md-6">
-            <div className="grid-inner row align-items-center gutter-20">
-                <div className="col-4">
-                    <div className="entry-image">
-                        <a href="#"><img src="images/blog/small/22.jpg" alt="Blog Single" /></a>
-                    </div>
-                </div>
-                <div className="col-8">
-                    <div className="entry-title title-xs">
-                        <h3><a href="#">This is an Audio Post</a></h3>
-                    </div>
-                    <div className="entry-meta">
-                        <ul>
-                            <li><i className="icon-calendar3"></i> 22nd Aug 2021</li>
-                            <li><a href="#"><i className="icon-comments"></i> 21</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        )}
+        </>
+     ))}
     </div>
 
     <div id="comments" className="clearfix">
