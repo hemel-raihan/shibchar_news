@@ -8,7 +8,7 @@ export default function RightSidebar() {
     <>
       <div className="sidebar-widgets-wrap">
 
-        <div className="widget clearfix">
+        {/* <div className="widget clearfix">
             <div className="row gutter-20 col-mb-30">
                 <div className="col-4">
                     <a href="#" className="social-icon si-dark si-colored si-facebook mb-0" style={{marginRight: '10px'}}>
@@ -34,13 +34,13 @@ export default function RightSidebar() {
                     <div className="counter counter-inherit d-inline-block text-smaller"><span className="d-block fw-bold" data-from="200" data-to="15475" data-refresh-interval="150" data-speed="3500" data-comma="true"></span><small>Readers</small></div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
-        <div className="widget clearfix">
+        {/* <div className="widget clearfix">
 
             <img className="aligncenter" src="images/magazine/ad.png" alt="Image" />
 
-        </div>
+        </div> */}
 
         <div className="widget widget_links clearfix">
 

@@ -66,7 +66,7 @@ useEffect(() => {
                 </div>
 
                 <div className="ms-auto pageheader-btn">
-                    <Link href="category/create">
+                    <Link href="posts/create">
                         <a className="btn btn-primary btn-icon text-white me-2">
                             <span>
                                 <i className="fe fe-plus"></i>

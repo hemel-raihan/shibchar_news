@@ -21,6 +21,7 @@ export default function Create() {
 	const router = useRouter();
 
 	const [formError, setError] = useState("");
+	const [formLoading, setLoading] = useState(false);
 
 	const [title, setTitle] = useState("");
 	var slug = title.replace(/\s+/g, '-').toLowerCase();
@@ -45,11 +46,11 @@ export default function Create() {
 				formData.append("categoryId", categoryId);
 			}
 			formData.append("desc", desc);
-
+			setLoading(false)
 			await http.post(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/posts`,formData)
 			.then((res)=>{
-			notify("success", "successfully Added!");
-				console.log(res.data);
+			   setLoading(true)
+			   notify("success", "successfully Added!");
 			router.push('/admin/blog/posts');
 			}).catch((e)=>{
 				setError(e.response.data.message)
@@ -75,7 +76,7 @@ export default function Create() {
           
         </div>
         <div className="ms-auto pageheader-btn">
-            <Link href="/admin/blog/category">
+            <Link href="/admin/blog/posts">
             <a  className="btn btn-primary btn-icon text-white me-2">Back To PostList</a>
             </Link>
             
@@ -102,36 +103,37 @@ export default function Create() {
                       
 					</div>
 
-					<div className="form-group">
+					{/* <div className="form-group">
 						<label htmlFor="exampleInputContent">Post Description</label>
 						<div className="ql-wrapper ql-wrapper-demo bg-light">
                             <textarea style={{height: '200px'}} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
 						</div>
-					</div>
+					</div> */}
 
 					<CKEditor
                     editor={ ClassicEditor }
-                    data="<p>Hello from CKEditor 5!</p>"
-                    onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log( 'Editor is ready to use!', editor );
-                    } }
+                    // data="<p>Hello from CKEditor 5!</p>"
+                    // onReady={ editor => {
+                    //     // You can store the "editor" and use when it is needed.
+                    //     console.log( 'Editor is ready to use!', editor );
+                    // } }
                     onChange={ ( event, editor ) => {
                         const data = editor.getData();
-                        console.log( { event, editor, data } );
+                        //console.log( { event, editor, data } );
+						setDesc(data)
                     } }
-                    onBlur={ ( event, editor ) => {
-                        console.log( 'Blur.', editor );
-                    } }
-                    onFocus={ ( event, editor ) => {
-                        console.log( 'Focus.', editor );
-                    } }
+                    // onBlur={ ( event, editor ) => {
+                    //     console.log( 'Blur.', editor );
+                    // } }
+                    // onFocus={ ( event, editor ) => {
+                    //     console.log( 'Focus.', editor );
+                    // } }
                 />
 
 				</div>
 				<div className="card-footer text-end">
 					<button type="submit" className="btn btn-success mt-1">
-                        Create
+                        Create {formLoading && (<img width="30px" style={{background: 'blue'}} src="/assets/frontend/small-loading.gif" />)}
                     </button>
 				</div>
 			</div>

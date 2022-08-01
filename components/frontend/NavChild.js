@@ -7,7 +7,7 @@ export default function NavChild({item}) {
     <ul className="sub-menu-container">
     {item?.childs?.map((child, i)=>(
         <li key={i} className="menu-item">
-            <a className="menu-link" href="intro.html#section-niche"><div>{child.name}</div></a>
+            <Link href={`/${child.slug}`}><a className="menu-link"><div>{child.name}</div></a></Link>
             {child?.childs?.length != 0 && (
               <NavChild item={child} />
             )}

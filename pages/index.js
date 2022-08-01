@@ -45,7 +45,7 @@ export default function Home() {
             {/* <div className="row gutter-40 col-mb-80"> */}
                 {/* <div className="postcontent col-lg-9"> */}
 
-                    <div className="row mt-50 col-mb-50 mb-0">
+                    {/* <div className="row mt-50 col-mb-50 mb-0">
                         <div className="col-md-12">
                             <div className="fslider flex-thumb-grid grid-6" data-speed="400" data-arrows="true" data-thumbs="true" data-easing="easeOutQuad">
                                 <div className="flexslider">
@@ -81,7 +81,7 @@ export default function Home() {
                             </div>
                         </div>
 
-                        {/* <div className="col-md-5">
+                        <div className="col-md-5">
 
                             <div className="posts-sm row col-mb-30">
                                 <div className="entry col-12">
@@ -115,8 +115,8 @@ export default function Home() {
                                 </div>
                             </div>
 
-                        </div> */}
-                    </div>
+                        </div>
+                    </div> */}
 
                     <div className="row col-mb-50 mb-0">
                     {data?.data?.map((category, index)=>(

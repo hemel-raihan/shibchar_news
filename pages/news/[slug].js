@@ -37,8 +37,8 @@ export default function NewsDetails() {
 
         <div className="entry-content mt-0">
 
-            {post?.desc}
-
+            <div dangerouslySetInnerHTML={{ __html: post?.desc }}></div>
+            
             <div className="tagcloud clearfix bottommargin">
                 <a href="#">general</a>
                 <a href="#">information</a>

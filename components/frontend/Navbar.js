@@ -13,8 +13,8 @@ export default function Navbar() {
         <div className="header-row flex-column flex-lg-row justify-content-center justify-content-lg-start">
 
             <div id="logo" className="me-0 me-lg-auto">
-                <Link href="/"><a className="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo.png" alt="Canvas Logo" /></a></Link>
-                <Link href="/"><a className="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt="Canvas Logo" /></a></Link>
+                <Link href="/"><a className="standard-logo" data-dark-logo="/assets/frontend/logo.png"><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></a></Link>
+                <Link href="/"><a className="retina-logo" data-dark-logo="/assets/frontend/logo.png"><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></a></Link>
             </div>
 
             <div className="header-misc mb-4 mb-lg-0 d-none d-lg-flex">
@@ -49,7 +49,7 @@ export default function Navbar() {
                     <ul className="menu-container">
                         {data.map((item, index)=>(
                             <li key={index} className="menu-item">
-                                <a className="menu-link" href="index.html"><div>{item.name}</div></a>
+                                <Link href={`/${item.slug}`}><a className="menu-link"><div>{item.name}</div></a></Link>
                                 {item?.childs?.length != 0 && (
                                     <NavChild item={item} />
                                 )}
