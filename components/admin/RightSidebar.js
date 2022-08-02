@@ -1,8 +1,15 @@
 import Link from "next/link";
-
+import Axios from "../../pages/utils/axios";
 
 export default function RightSidebar() {
   
+	const {token,user,logout} = Axios();
+	
+	const logoutHandle=()=>{
+		if(token != undefined){
+			logout();
+		}
+	}
 
   return (
     <>
@@ -78,14 +85,14 @@ export default function RightSidebar() {
 									</div>
 									</a>
 								</Link>
-								<Link href="login">
-									<a className="dropdown-item d-flex border-bottom">
-									<div className="d-flex"><i className="fe fe-power me-3 tx-20 text-muted"></i>
-										<div className="pt-1">
-											<h6 className="mb-0">Sign Out</h6>
-											<p className="tx-12 mb-0 text-muted">Account Signout</p>
+								<Link href="/admin/login">
+									<a onClick={logoutHandle} className="dropdown-item d-flex border-bottom">
+										<div className="d-flex"><i className="fe fe-power me-3 tx-20 text-muted"></i>
+											<div className="pt-1">
+												<h6 className="mb-0">Sign Out</h6>
+												<p className="tx-12 mb-0 text-muted">Account Signout</p>
+											</div>
 										</div>
-									</div>
 									</a>
 								</Link>
 							</div>

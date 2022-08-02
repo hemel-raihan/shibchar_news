@@ -12,8 +12,8 @@ const Layout=({children} )=> {
   return (
     <>
     <Head>
-    <title>Admin Dashboard</title>
-    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <title>Admin Dashboard</title>
+        <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
         <link href="/assets/css/style.css" rel="stylesheet"/>
         <link href="/assets/css/dark-style.css" rel="stylesheet"/>
@@ -107,19 +107,19 @@ const Layout=({children} )=> {
     /> */}
 
         <div className="app sidebar-mini">
-        <div className="page">
-            <div className="page-main">
-                <LeftSidebar />
-                <Header />
-                <div className="app-content">
-                    <div className="side-app">
-                        {children}
-                    </div>
-                </div>
-            </div>
-            <RightSidebar />
-            <Footer />
-        </div>
+          <div className="page">
+              <div className="page-main">
+                  <LeftSidebar />
+                  <Header />
+                  <div className="app-content">
+                      <div className="side-app">
+                          {children}
+                      </div>
+                  </div>
+              </div>
+              <RightSidebar />
+              <Footer />
+          </div>
         </div>
 
     </>

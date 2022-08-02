@@ -6,7 +6,21 @@ function MyApp({ Component, pageProps }) {
 
   const getLayout = Component.getLayout || ((page) => page)
 
-  return getLayout(<Component {...pageProps} />)
+  return getLayout(
+    <>
+    <Component {...pageProps} />
+    <ToastContainer
+      position="top-right"
+      autoClose={8000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      draggable={false}
+      closeOnClick
+      pauseOnHover
+    />
+    </>
+  
+  )
   
   // return (
   //   <Layout>
