@@ -13,7 +13,7 @@ export default function Header() {
 							<Link  href="#"><a aria-label="Hide Sidebar" className="app-sidebar__toggle" data-bs-toggle="sidebar"></a></Link>
 
 							<Link  href="/">
-							   <a class="nav-link icon full-screen-link mt-2 nav-link-bg" target="_blank"><i class="fe fe-globe"></i></a>
+							   <a className="nav-link icon full-screen-link mt-2 nav-link-bg" target="_blank"><i className="fe fe-globe"></i></a>
 							</Link>
 							
 
@@ -129,7 +129,7 @@ export default function Header() {
                                                                 3 hours ago
                                                             </small>
                                                         </div>
-                                                        <span>Hey! there I' am available....</span>
+                                                        <span>Hey! there I am available....</span>
                                                     </div>
                                                 </a>
 											</Link>
@@ -329,7 +329,7 @@ export default function Header() {
                                                             3 hours ago
                                                         </small>
                                                     </div>
-                                                    <span>Hey! there I' am available....</span>
+                                                    <span>Hey! there I am available....</span>
                                                 </div>
                                             </a>
 										</Link>
