@@ -29,8 +29,8 @@ export default function Home() {
                         <div className="fslider" data-speed="800" data-pause="6000" data-arrows="false" data-pagi="false" style={{minHeight: 0}}>
                             <div className="flexslider">
                                 <div className="slider-wrap">
-                                    <div className="slide"><a href="#"><strong>Russia hits back, says US acts like a 'bad surgeon'..</strong></a></div>
-                                    <div className="slide"><a href="#"><strong>'Sulking' Narayan Rane needs consolation: Uddhav reacts to Cong leader's attack..</strong></a></div>
+                                    <div className="slide"><a href="#"><strong>Russia hits back, says US acts like a bad surgeon..</strong></a></div>
+                                    <div className="slide"><a href="#"><strong>Sulking Narayan Rane needs consolation: Uddhav reacts to Cong leaders attack..</strong></a></div>
                                     <div className="slide"><a href="#"><strong>Rane needs consolation. I pray to God that he gets mental peace in a political party..</strong></a></div>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@ export default function Home() {
                                         <div className="posts-md">
                                             <div className="entry">
                                                 <div className="entry-image">
-                                                    <iframe src="//player.vimeo.com/video/97243508" width="500" height="281" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                                                    <iframe src="//player.vimeo.com/video/97243508" width="500" height="281" allow="autoplay; fullscreen"></iframe>
                                                 </div>
                                                 <div className="entry-title title-sm">
                                                     <h3><a href="blog-single.html">Foreign advisors killed in Kabul blast</a></h3>
@@ -274,13 +274,13 @@ export default function Home() {
                                         <div className="posts-sm row col-mb-30">
                                             <div className="entry col-12">
                                                 <div className="entry-title">
-                                                    <h4><a href="#">UK government weighs Tesla's Model S for its ??5 million electric vehicle fleet</a></h4>
+                                                    <h4><a href="#">UK government weighs Teslas Model S for its ??5 million electric vehicle fleet</a></h4>
                                                 </div>
                                             </div>
 
                                             <div className="entry col-12">
                                                 <div className="entry-title">
-                                                    <h4><a href="#">MIT's new robot glove can give you extra fingers</a></h4>
+                                                    <h4><a href="#">MITs new robot glove can give you extra fingers</a></h4>
                                                 </div>
                                             </div>
 
@@ -310,7 +310,7 @@ export default function Home() {
 
                                             <div className="entry col-12">
                                                 <div className="entry-title">
-                                                    <h4><a href="#">How would you change Kobo's Aura HD e-reader?</a></h4>
+                                                    <h4><a href="#">How would you change Kobos Aura HD e-reader?</a></h4>
                                                 </div>
                                             </div>
 
@@ -529,7 +529,7 @@ export default function Home() {
 
                                             <div className="entry col-12">
                                                 <div className="entry-title">
-                                                    <h4><a href="#">Major Lazer's Walshy Fire Presents: Jesse Royal - Royally Speaking</a></h4>
+                                                    <h4><a href="#">Major Lazers Walshy Fire Presents: Jesse Royal - Royally Speaking</a></h4>
                                                 </div>
                                                 <div className="entry-meta">
                                                     <ul>
@@ -620,7 +620,7 @@ export default function Home() {
 
                                             <div className="entry col-12">
                                                 <div className="entry-title">
-                                                    <h4><a href="#">Maradona says Messi didn't deserve Golden Ball?</a></h4>
+                                                    <h4><a href="#">Maradona says Messi didnt deserve Golden Ball?</a></h4>
                                                 </div>
                                                 <div className="entry-meta">
                                                     <ul>

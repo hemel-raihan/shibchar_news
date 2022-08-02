@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Pagination from "react-js-pagination";
 import axios from 'axios';
 
-export default function tableList() {
+export default function TableList() {
 
   const notify = React.useCallback((type, message) => {
     toast({ type, message });

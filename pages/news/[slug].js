@@ -252,29 +252,29 @@ export default function NewsDetails() {
 
             <form className="row" action="#" method="post" id="commentform">
                 <div className="col-md-4 form-group">
-                    <label for="author">Name</label>
-                    <input type="text" name="author" id="author" value="" size="22" tabindex="1" className="sm-form-control" />
+                    <label htmlFor="author">Name</label>
+                    <input type="text" name="author" id="author" value="" size="22" className="sm-form-control" />
                 </div>
 
                 <div className="col-md-4 form-group">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="email" value="" size="22" tabindex="2" className="sm-form-control" />
+                    <label htmlFor="email">Email</label>
+                    <input type="text" name="email" id="email" value="" size="22" className="sm-form-control" />
                 </div>
 
                 <div className="col-md-4 form-group">
-                    <label for="url">Website</label>
-                    <input type="text" name="url" id="url" value="" size="22" tabindex="3" className="sm-form-control" />
+                    <label htmlFor="url">Website</label>
+                    <input type="text" name="url" id="url" value="" size="22" className="sm-form-control" />
                 </div>
 
                 <div className="w-100"></div>
 
                 <div className="col-12 form-group">
-                    <label for="comment">Comment</label>
-                    <textarea name="comment" cols="58" rows="7" tabindex="4" className="sm-form-control"></textarea>
+                    <label htmlFor="comment">Comment</label>
+                    <textarea name="comment" cols="58" rows="7" className="sm-form-control"></textarea>
                 </div>
 
                 <div className="col-12 form-group">
-                    <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" className="button button-3d m-0">Submit Comment</button>
+                    <button name="submit" type="submit" id="submit-button" value="Submit" className="button button-3d m-0">Submit Comment</button>
                 </div>
             </form>
 
