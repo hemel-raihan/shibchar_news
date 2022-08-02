@@ -9,7 +9,7 @@ export default function AllNews() {
 
     const router = useRouter();
 	const { slug } = router.query;
-    const {data, loading, error} = useFetch(`http://localhost:5000/api/home/category/posts/${slug}`)
+    const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/category/posts/${slug}`)
     //var post = data[0];
   return (
     <>
@@ -17,7 +17,7 @@ export default function AllNews() {
 
     <div id="posts" className="post-grid row grid-container gutter-40 clearfix" data-layout="fitRows">
         {data?.posts?.map((post, index)=>(
-            <div className="entry col-md-4 col-sm-6 col-12">
+        <div key={index} className="entry col-md-4 col-sm-6 col-12">
             <div className="grid-inner">
                 <div className="entry-image">
                     <Link href={`news/${post.slug}`}><a data-lightbox="image"><img src={post.photo} alt="Standard Post with Image" /></a></Link>

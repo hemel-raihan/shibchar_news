@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
 
-    const {data, loading, error} = useFetch("http://localhost:5000/api/home/categories/posts")
+    const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/categories/posts`)
 //console.log(data.data?.posts)
   return (
     <>

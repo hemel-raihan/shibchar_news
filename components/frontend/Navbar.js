@@ -4,7 +4,7 @@ import NavChild from './NavChild';
 
 export default function Navbar() {
   
-    const {data, loading, error} = useFetch("http://localhost:5000/api/home/categories")
+    const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/categories`)
 
   return (
     <>

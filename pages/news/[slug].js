@@ -9,7 +9,7 @@ export default function NewsDetails() {
 
     const router = useRouter();
 	const { slug } = router.query;
-    const {data, loading, error} = useFetch(`http://localhost:5000/api/home/post/${slug}`)
+    const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/post/${slug}`)
     var post = data[0];
 
   return (

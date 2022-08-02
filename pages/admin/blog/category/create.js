@@ -14,7 +14,7 @@ export default function Create() {
 		toast({ type, message });
 	  }, []);
   
-	const {data, loading, error} = useFetch("http://localhost:5000/api/blog/categories/child")
+	const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/categories/child`)
 
 	const {http} = Axios();
 	const router = useRouter();
