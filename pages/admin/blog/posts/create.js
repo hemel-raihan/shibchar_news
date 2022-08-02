@@ -103,14 +103,14 @@ export default function Create() {
                       
 					</div>
 
-					{/* <div className="form-group">
+					<div className="form-group">
 						<label htmlFor="exampleInputContent">Post Description</label>
 						<div className="ql-wrapper ql-wrapper-demo bg-light">
                             <textarea style={{height: '200px'}} onChange={(e)=>setDesc(e.target.value)} className="form-control" id="" name="desc"></textarea>
 						</div>
-					</div> */}
+					</div>
 
-					<CKEditor
+					{/* <CKEditor
                     editor={ ClassicEditor }
                     // data="<p>Hello from CKEditor 5!</p>"
                     // onReady={ editor => {
@@ -128,7 +128,7 @@ export default function Create() {
                     // onFocus={ ( event, editor ) => {
                     //     console.log( 'Focus.', editor );
                     // } }
-                />
+                /> */}
 
 				</div>
 				<div className="card-footer text-end">
