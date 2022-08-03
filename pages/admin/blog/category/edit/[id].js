@@ -218,7 +218,7 @@ export default function Update() {
                     <div className="form-group">
 						<label className="form-label">Category Image</label>
                         <input type="file"  onChange={(e) => setFile(e.target.files[0])} className=" form-control"  name="image" />
-						{image && <img  src={image} alt="" />}
+						{image && <picture><img  src={image} alt="" /></picture>}
 					</div>
 				</div>
 			</div>
