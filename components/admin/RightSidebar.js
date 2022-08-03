@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Axios from "../../pages/utils/axios";
+import Axios from "../../utils/axios";
 
 export default function RightSidebar() {
   

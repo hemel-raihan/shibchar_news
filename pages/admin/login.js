@@ -1,7 +1,7 @@
 import Header from '../../components/frontend/Header';
 import Link from "next/link";
 import toast from "../../components/admin/Toast/index";
-import Axios from '../utils/axios';
+import Axios from '../../utils/axios';
 import React, { useState } from 'react';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

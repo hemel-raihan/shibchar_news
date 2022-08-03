@@ -3,7 +3,7 @@ import Link  from 'next/link';
 import Layout from "../../components/admin/Layout"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Axios from "../utils/axios";
+import Axios from "../../utils/axios";
 import Login from './login';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
