@@ -132,7 +132,7 @@ export default function Home() {
                                 <div key={i} className="entry col-sm-6 col-md-4">
                                     <div className="grid-inner">
                                         <div className="entry-image">
-                                            <a href="#"><picture><img src={post.photo} alt="Image" /></picture></a>
+                                            <a href="#"><img src={post.photo} alt="Image" /></a>
                                         </div>
                                         <div className="entry-title title-xs nott">
                                             <h3><Link href={`news/${post.slug}`}>
@@ -156,7 +156,7 @@ export default function Home() {
                         </>
                         ))}
                         <div className="col-12">
-                            <picture><img src="images/magazine/ad.jpg" alt="Ad" className="aligncenter my-0" /></picture>
+                            <img src="images/magazine/ad.jpg" alt="Ad" className="aligncenter my-0" />
                         </div>
 
                         {/* <div className="col-12">
@@ -332,7 +332,7 @@ export default function Home() {
                                         <div className="posts-md">
                                             <div className="entry">
                                                 <div className="entry-image">
-                                                    <a href="#"><picture><img src="images/magazine/17.jpg" alt="Image" /></picture></a>
+                                                    <a href="#"><img src="images/magazine/17.jpg" alt="Image" /></a>
                                                 </div>
                                                 <div className="entry-title title-sm">
                                                     <h3><a href="blog-single.html">Review: Dallas Buyers Club</a></h3>
@@ -359,7 +359,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/3.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/3.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -380,7 +380,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/4.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/4.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -401,7 +401,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/5.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/5.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -422,7 +422,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/6.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/6.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -443,7 +443,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/7.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/7.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -464,7 +464,7 @@ export default function Home() {
                                                 <div className="grid-inner row align-items-center g-0">
                                                     <div className="col-auto">
                                                         <div className="entry-image">
-                                                            <a href="#"><picture><img src="images/magazine/small/movie/8.jpg" alt="Image" /></picture></a>
+                                                            <a href="#"><img src="images/magazine/small/movie/8.jpg" alt="Image" /></a>
                                                         </div>
                                                     </div>
                                                     <div className="col ps-3">
@@ -587,7 +587,7 @@ export default function Home() {
                                         <div className="posts-md">
                                             <div className="entry">
                                                 <div className="entry-image">
-                                                    <a href="#"><picture><img src="images/magazine/18.jpg" alt="Image" /></picture></a>
+                                                    <a href="#"><img src="images/magazine/18.jpg" alt="Image" /></a>
                                                 </div>
                                                 <div className="entry-title title-sm">
                                                     <h3><a href="blog-single.html">America Should Stay Out of Foreign Troubles?</a></h3>
