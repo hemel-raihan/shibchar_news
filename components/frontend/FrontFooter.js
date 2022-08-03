@@ -19,7 +19,7 @@ export default function FrontFooter() {
 
                             <div className="widget clearfix">
 
-                                <picture><img src="images/footer-widget-logo.png" alt="Image" className="footer-logo" /></picture>
+                                <img src="images/footer-widget-logo.png" alt="Image" className="footer-logo" />
 
                                 <p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards.</p>
 

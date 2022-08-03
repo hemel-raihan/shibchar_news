@@ -13,14 +13,14 @@ export default function Navbar() {
         <div className="header-row flex-column flex-lg-row justify-content-center justify-content-lg-start">
 
             <div id="logo" className="me-0 me-lg-auto">
-                <Link href="/"><a className="standard-logo" data-dark-logo="/assets/frontend/logo.png"><picture><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></picture></a></Link>
-                <Link href="/"><a className="retina-logo" data-dark-logo="/assets/frontend/logo.png"><picture><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></picture></a></Link>
+                <Link href="/"><a className="standard-logo" data-dark-logo="/assets/frontend/logo.png"><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></a></Link>
+                <Link href="/"><a className="retina-logo" data-dark-logo="/assets/frontend/logo.png"><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></a></Link>
             </div>
 
             <div className="header-misc mb-4 mb-lg-0 d-none d-lg-flex">
 
                 <div className="top-advert">
-                    <picture><img src="images/magazine/ad.jpg" alt="Ad" /></picture>
+                    <img src="images/magazine/ad.jpg" alt="Ad" />
                 </div>
 
             </div>

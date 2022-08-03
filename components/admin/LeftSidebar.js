@@ -11,10 +11,10 @@ export default function LeftSidebar() {
 					<div className="side-header">
 						<Link className="header-brand1" href="index">
                             <a>
-                                <picture><img src="/assets/images/brand/logo.png" className="header-brand-img desktop-logo" alt="logo" /></picture>
-                                <picture><img src="/assets/images/brand/logo-1.png" className="header-brand-img toggle-logo" alt="logo" /></picture>
-                                <picture><img src="/assets/images/brand/logo-2.png" className="header-brand-img light-logo" alt="logo" /></picture>
-                                <picture><img src="/assets/images/brand/logo-3.png" className="header-brand-img light-logo1" alt="logo" /></picture>
+                                <img src="/assets/images/brand/logo.png" className="header-brand-img desktop-logo" alt="logo" />
+                                <img src="/assets/images/brand/logo-1.png" className="header-brand-img toggle-logo" alt="logo" />
+                                <img src="/assets/images/brand/logo-2.png" className="header-brand-img light-logo" alt="logo" />
+                                <img src="/assets/images/brand/logo-3.png" className="header-brand-img light-logo1" alt="logo" />
                             </a>
 						</Link>
 					</div>

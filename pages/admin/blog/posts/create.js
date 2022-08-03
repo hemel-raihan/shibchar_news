@@ -133,7 +133,7 @@ export default function Create() {
 				</div>
 				<div className="card-footer text-end">
 					<button type="submit" className="btn btn-success mt-1">
-                        Create {formLoading && (<picture><img width="30px" style={{background: 'blue'}} alt="" src="/assets/frontend/small-loading.gif" /></picture>)}
+                        Create {formLoading && (<img width="30px" style={{background: 'blue'}} alt="" src="/assets/frontend/small-loading.gif" />)}
                     </button>
 				</div>
 			</div>
@@ -204,7 +204,7 @@ export default function Create() {
                     <div className="form-group">
 						<label className="form-label">Feature Image</label>
                         <input type="file"  onChange={(e) => setFile(e.target.files[0])} className="dropify form-control" name="image" />
-						{file && <picture><img  src={URL.createObjectURL(file)} alt="" /></picture>}
+						{file && <img  src={URL.createObjectURL(file)} alt="" />}
 					</div>
 				</div>
 			</div>

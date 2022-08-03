@@ -32,7 +32,7 @@ export default function NewsDetails() {
         </div>
 
         <div className="entry-image">
-            <picture><img src={post?.photo} alt="Blog Single" /></picture>
+            <img src={post?.photo} alt="Blog Single" />
         </div>
 
         <div className="entry-content mt-0">
@@ -99,7 +99,7 @@ export default function NewsDetails() {
         <div className="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>
         <div className="card-body">
             <div className="author-image">
-                <picture><img src="images/author/1.jpg" alt="Image" className="rounded-circle" /></picture>
+                <img src="images/author/1.jpg" alt="Image" className="rounded-circle" />
             </div>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
         </div>
@@ -117,7 +117,7 @@ export default function NewsDetails() {
             <div className="grid-inner row align-items-center gutter-20">
                 <div className="col-4">
                     <div className="entry-image">
-                        <Link href={`news/${relatedPost.slug}`}><a><picture><img src={relatedPost.photo} alt="Blog Single" /></picture></a></Link>
+                        <Link href={`news/${relatedPost.slug}`}><a><img src={relatedPost.photo} alt="Blog Single" /></a></Link>
                     </div>
                 </div>
                 <div className="col-8">
@@ -153,7 +153,7 @@ export default function NewsDetails() {
                         <div className="comment-author vcard">
 
                             <span className="comment-avatar clearfix">
-                            <picture><img alt='Image' src='https://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' className='avatar avatar-60 photo avatar-default' height='60' width='60' /></picture></span>
+                            <img alt='Image' src='https://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' className='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
 
                         </div>
 
@@ -185,7 +185,7 @@ export default function NewsDetails() {
                                 <div className="comment-author vcard">
 
                                     <span className="comment-avatar clearfix">
-                                    <picture><img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' className='avatar avatar-40 photo' height='40' width='40' /></picture></span>
+                                    <img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' className='avatar avatar-40 photo' height='40' width='40' /></span>
 
                                 </div>
 
@@ -220,7 +220,7 @@ export default function NewsDetails() {
                         <div className="comment-author vcard">
 
                             <span className="comment-avatar clearfix">
-                            <picture><img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' className='avatar avatar-60 photo' height='60' width='60' /></picture></span>
+                            <img alt='Image' src='https://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' className='avatar avatar-60 photo' height='60' width='60' /></span>
 
                         </div>
 
