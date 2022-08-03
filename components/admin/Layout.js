@@ -13,7 +13,7 @@ const Layout=({children} )=> {
     <>
     <Head>
         <title>Admin Dashboard</title>
-        {/* <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
         <link href="/assets/css/style.css" rel="stylesheet"/>
         <link href="/assets/css/dark-style.css" rel="stylesheet"/>
@@ -32,7 +32,7 @@ const Layout=({children} )=> {
         <link id="theme" rel="stylesheet" type="text/css" media="all" href="/assets/colors/color1.css"/>
 
         <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/jquery.transfer.css" />
-		    <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/icon_font/icon_font.css" /> */}
+		    <link rel="stylesheet" href="/assets/plugins/jQuerytransfer/icon_font/icon_font.css" />
    </Head>
 
    {/* <Script
