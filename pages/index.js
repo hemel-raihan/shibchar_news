@@ -16,7 +16,7 @@ export default function Home() {
     {/* <section id="content">
     <div className="content-wrap"> */}
 
-        <div className="section header-stick bottommargin-lg py-3">
+        {/* <div className="section header-stick bottommargin-lg py-3">
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-auto">
@@ -38,7 +38,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
         {/* <div className="container clearfix"> */}
 
