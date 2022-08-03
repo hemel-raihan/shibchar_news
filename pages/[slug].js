@@ -5,6 +5,8 @@ import useFetch from '../hooks/useFetch';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import Image from 'next/image'
+
 export default function AllNews() {
 
     const router = useRouter();
@@ -20,7 +22,7 @@ export default function AllNews() {
         <div key={index} className="entry col-md-4 col-sm-6 col-12">
             <div className="grid-inner">
                 <div className="entry-image">
-                    <Link href={`news/${post.slug}`}><a data-lightbox="image"><img src={post.photo} alt="Standard Post with Image" /></a></Link>
+                    <Link href={`news/${post.slug}`}><a data-lightbox="image"><Image src={post.photo} alt="Standard Post with Image" /></a></Link>
                 </div>
                 <div className="entry-title">
                     <h2><Link href={`news/${post.slug}`}><a>{post.title}</a></Link></h2>
