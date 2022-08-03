@@ -8,8 +8,8 @@ import toast from "../../../../components/admin/Toast/index";
 import Layout from "../../../../components/admin/Layout"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export default function Create() {
 	const notify = React.useCallback((type, message) => {
 		toast({ type, message });
