@@ -159,7 +159,7 @@ useEffect(() => {
   );
 }           
 
-tableList.getLayout = function getLayout(page) {
+TableList.getLayout = function getLayout(page) {
     return (
       <Layout>
         {page}

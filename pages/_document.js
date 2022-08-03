@@ -54,18 +54,18 @@ class MyDocument extends Document {
 
      
 
-      <script src="/assets/plugins/jquery/jquery.min.js"></script>
-      <script src="/assets/plugins/bootstrap/js/popper.min.js"></script>
-      <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+      <script async src="/assets/plugins/jquery/jquery.min.js"></script>
+      <script async src="/assets/plugins/bootstrap/js/popper.min.js"></script>
+      <script async src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
           
-      <script src="/assets/plugins/input-mask/jquery.mask.min.js"></script>
-      <script src="/assets/plugins/sidemenu/sidemenu.js"></script>
-      <script src="/assets/plugins/sidebar/sidebar.js"></script>
+      <script async src="/assets/plugins/input-mask/jquery.mask.min.js"></script>
+      <script async src="/assets/plugins/sidemenu/sidemenu.js"></script>
+      <script async src="/assets/plugins/sidebar/sidebar.js"></script>
       
-      <script src="/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
-      <script src="/assets/plugins/p-scroll/pscroll.js"></script>
-      <script src="/assets/plugins/p-scroll/pscroll-1.js"></script>
-      <script src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
+      <script async src="/assets/plugins/p-scroll/perfect-scrollbar.js"></script>
+      <script async src="/assets/plugins/p-scroll/pscroll.js"></script>
+      <script async src="/assets/plugins/p-scroll/pscroll-1.js"></script>
+      <script async src="/assets/plugins/jQuerytransfer/jquery.transfer.js"></script>
 
       {/* Frontend */}
       
