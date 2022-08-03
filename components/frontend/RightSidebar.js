@@ -112,7 +112,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -132,7 +132,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -152,7 +152,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -175,7 +175,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/1.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -195,7 +195,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/2.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -215,7 +215,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/magazine/small/3.jpg" alt="Image" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -238,7 +238,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -251,7 +251,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -264,7 +264,7 @@ export default function RightSidebar() {
                                 <div className="grid-inner row g-0">
                                     <div className="col-auto">
                                         <div className="entry-image">
-                                            <a href="#"><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></a>
+                                            <a href="#"><picture><img className="rounded-circle" src="images/icons/avatar.jpg" alt="User Avatar" /></picture></a>
                                         </div>
                                     </div>
                                     <div className="col ps-3">
@@ -283,7 +283,7 @@ export default function RightSidebar() {
 
         <div className="widget clearfix">
 
-            <img className="aligncenter" src="images/magazine/ad.png" alt="Image" />
+            <picture><img className="aligncenter" src="images/magazine/ad.png" alt="Image" /></picture>
 
         </div>
 

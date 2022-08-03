@@ -37,7 +37,7 @@ export default function RightSidebar() {
 								<div className="card-body text-center">
 									<div className="dropdown user-pro-body">
 										<div className="">
-											<img alt="user-img" className="avatar avatar-xl brround mx-auto text-center" src="/assets/images/faces/6.jpg" /><span className="avatar-status profile-status bg-green"></span>
+											<picture><img alt="user-img" className="avatar avatar-xl brround mx-auto text-center" src="/assets/images/faces/6.jpg" /></picture><span className="avatar-status profile-status bg-green"></span>
 										</div>
 										<div className="user-info mg-t-20">
 											<h6 className="fw-semibold  mt-2 mb-0">Mintrona Pechon</h6>

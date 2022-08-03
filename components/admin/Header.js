@@ -18,7 +18,7 @@ export default function Header() {
 							
 
 							<Link href="#">
-                                <a className="header-brand1 d-flex d-md-none"><img src="/assets/images/brand/logo.png" className="header-brand-img desktop-logo" alt="logo" /></a>
+                                <a className="header-brand1 d-flex d-md-none"><picture><img src="/assets/images/brand/logo.png" className="header-brand-img desktop-logo" alt="logo" /></picture></a>
                             </Link>
 							<div className="main-header-center ms-3 d-none d-md-block">
 								<input className="form-control" placeholder="Search for anything..." type="search" /> <button className="btn"><i className="fa fa-search" aria-hidden="true"></i></button>
@@ -184,7 +184,7 @@ export default function Header() {
 									<Link href="#"> 
 										<a data-bs-toggle="dropdown" className="nav-link pe-2 leading-none d-flex">
 										<span>
-											<img src="/assets/images/users/8.jpg" alt="profile-user" className="avatar  profile-user brround cover-image" />
+											<picture><img src="/assets/images/users/8.jpg" alt="profile-user" className="avatar  profile-user brround cover-image" /></picture>
 										</span>
 										</a>
 									</Link>
@@ -384,7 +384,7 @@ export default function Header() {
 								<Link href="#">
 									<a data-bs-toggle="dropdown" className="nav-link pe-2 leading-none d-flex">
 									<span>
-										<img src="/assets/images/users/8.jpg" alt="profile-user" className="avatar  profile-user brround cover-image" />
+										<picture><img src="/assets/images/users/8.jpg" alt="profile-user" className="avatar  profile-user brround cover-image" /></picture>
 									</span>
 									</a>
 								</Link>

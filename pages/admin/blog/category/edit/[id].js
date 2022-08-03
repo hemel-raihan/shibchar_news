@@ -61,7 +61,7 @@ export default function Update() {
         }
         fetchData()
 		router.isReady && fetchDetails()
-    },[id])
+    },[id, router.isReady])
 
 	async function submitForm(e) {
 		e.preventDefault();

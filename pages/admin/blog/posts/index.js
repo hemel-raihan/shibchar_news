@@ -106,7 +106,7 @@ useEffect(() => {
                             <tr key={index}>
                                 <td>{post.title}</td>
                                 <td>{post.category.name}</td>
-                                <td>{post.photo && <img width="100px" src={post.photo} alt="" />}</td>
+                                <td>{post.photo && <picture><img width="100px" src={post.photo} alt="" /></picture>}</td>
 
                                 <td>
                                     <Link href={`category/edit/${post._id}`}>

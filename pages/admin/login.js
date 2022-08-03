@@ -42,7 +42,7 @@ export default function Login() {
 					<div className="vertical-middle">
 						<div className="container-fluid py-5 mx-auto">
 							<div className="center">
-								<a href="index.html"><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></a>
+								<a href="index.html"><picture><img src="/assets/frontend/logo.png" alt="Canvas Logo" /></picture></a>
 							</div>
 
 							<div className="card mx-auto rounded-0 border-0" style={{maxWidth: '400px', backgroundColor: 'rgba(255,255,255,0.93)'}}>
