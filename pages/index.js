@@ -5,12 +5,30 @@ import useFetch from '../hooks/useFetch';
 import moment from 'moment';
 import Link from "next/link";
 import Spinner from 'react-bootstrap/Spinner';
+import React, { useEffect, useState } from "react";
+import Axios from '../hooks/axios';
 
 export default function Home() {
+
+    const {http} = Axios();
 
     const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/categories/posts`)
 
     const style = { position: "fixed", top: "50%", left: "35%", transform: "translate(-50%, -50%)" };
+
+    const [posts, setPost] = useState()
+    console.log(posts);
+    useEffect(() => {
+          postList()
+    },[]);
+    
+    const postList = async () => {
+        await http.get(`${process.env.NEXT_PUBLIC_DOMAIN}/blog/posts`)
+        .then((res)=>{
+          setPost(res.data);
+        });
+      };
+
   return (
     <>
     <Header title={'Home'} />
@@ -131,6 +149,48 @@ export default function Home() {
 
                         </div>
                     </div> */}
+                    <div className="col-lg-12 bottommargin">
+                    <div className="row">
+                        {/* <div className="mobile_big_news" style="display: none;">
+                            @foreach (\App\Models\blog\Post::where('hot_news', 1)->orderBy('id', 'desc')->take(1)->get() as $key => $big_post)
+
+                            @if ($big_post->status == 1)
+                            <div className="entry col-sm-6 col-xl-3">
+                                @include('frontend_theme.news_portal.partials.news_box_3',['post'=>$big_post])
+                            </div>
+
+
+                            @endif
+                            @endforeach
+                        </div> */}
+                        
+                        {posts?.data?.map((hotNews, x) =>(
+                        <div key={x} className="col-md-6 col-sm-12 mb-3 news_box_all">
+                            <div className="grid-inner row g-0" style={{background: '#eff3f4', paddingTop: '10px'}}>
+                                <div className="col-md-3">
+                                    <div className="entry-image-2">
+                                        <Link href={`news/${hotNews.slug}`}><a><img src={hotNews.photo} width="300" alt="Image" /></a></Link>
+                                    </div>
+                                </div>
+                                <div className="col ps-3">
+                                    <div className="entry-title">
+                                        <h4>
+                                           <Link href={`news/${hotNews.slug}`}><a>{hotNews.title.substring(0, 50)}</a></Link> 
+                                        </h4>
+                                    </div>
+                                    <div className="entry-meta">
+                                        <ul>
+                                            <li><i className="icon-calendar3"></i>{moment(hotNews.createdAt).format('Do MMMM YYYY')}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        ))}
+                        
+                   </div>
+
+                </div>
 
                     <div className="row col-mb-50 mb-0">
                     {data?.data?.map((category, index)=>(

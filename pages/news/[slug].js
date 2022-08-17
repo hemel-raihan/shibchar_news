@@ -5,6 +5,8 @@ import useFetch from '../../hooks/useFetch';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 import Link from "next/link";
+import Spinner from 'react-bootstrap/Spinner';
+
 export default function NewsDetails() {
 
     const router = useRouter();
@@ -12,9 +14,22 @@ export default function NewsDetails() {
     const {data, loading, error} = useFetch(`${process.env.NEXT_PUBLIC_DOMAIN}/home/post/${slug}`)
     var post = data[0];
 
+    const style = { position: "fixed", top: "50%", left: "35%", transform: "translate(-50%, -50%)" };
+
   return (
     <>
     <Header title={slug} />
+
+    {loading ? (
+        <div style={style}>
+        <Spinner animation="border" role="status">
+            
+            <span className="visually-hidden">Loading...</span>
+           
+        </Spinner>
+        </div>
+    ) : (
+    <>
 
     <div className="single-post mb-0">
 
@@ -283,6 +298,8 @@ export default function NewsDetails() {
     </div>
 
 </div>
+</>
+)}
     </>
   )
 }

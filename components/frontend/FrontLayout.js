@@ -1,6 +1,7 @@
 
 import Header from '../admin/Header';
 import Navbar from './Navbar';
+import TopBar from './TopBar';
 import FrontFooter from './FrontFooter';
 import RightSidebar from './RightSidebar';
 
@@ -13,7 +14,8 @@ const FrontLayout=({children} )=> {
 
           <div id="wrapper" className="clearfix">
 
-               <Navbar />
+               {/* <Navbar /> */}
+               <TopBar />
 
             <section id="content">
               <div className="content-wrap">
